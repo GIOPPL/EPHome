@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/lin_policyItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#d2d0d0"
+        android:orientation="vertical">
+
+        <include layout="@layout/top_back" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/tv_policyDetail_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="农业部大力推动落实休闲农业和乡村旅游发展政策"
+                android:textColor="#3d3c3c"
+                android:textSize="20dp" />
+
+            <TextView
+                android:paddingTop="10dp"
+                android:gravity="center"
+                android:id="@+id/tv_policyDetail_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="农业部新闻办公室           2017-05-31 15:05:16" />
+
+            <TextView
+                android:textColor="#e03d3c3c"
+                android:paddingTop="10dp"
+                android:id="@+id/tv_policyDetail_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/policy_1_content" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

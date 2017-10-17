@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <EditText
+            android:id="@+id/ed_epCal_count"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:hint="数量(kg)"
+            android:maxLength="10000"
+            android:padding="10dp"
+            android:textColor="#181717"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_epCal_pop"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:background="#74D6AF"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="种类"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="="
+            android:textColor="#000000"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/tv_epCal_money"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="￥0"
+            android:textColor="#ed0606"
+            android:textSize="20sp" />
+    </LinearLayout>
+</LinearLayout>

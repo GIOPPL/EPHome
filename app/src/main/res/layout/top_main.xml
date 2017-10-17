@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#41adfa"
+    android:id="@+id/rea_main"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="环保之家"
+        android:textColor="#fefefe"
+        android:gravity="center"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:clickable="true"
+        android:visibility="gone"
+        android:id="@+id/im_top_add"
+        android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_top_add_forum"/>
+    <ImageView
+        android:visibility="gone"
+        android:clickable="true"
+        android:id="@+id/im_top_calculator"
+        android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/btn_caclulator"/>
+</RelativeLayout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:background="#ECECEC"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#41adfa"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="1dp" />
+
+        <TextView
+            android:id="@+id/tv_twoAddCircle_back"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="返回"
+            android:textColor="#ffffff" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:onClick="confirmAdd"
+            android:id="@+id/tv_addForum_OK"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:paddingRight="10dp"
+            android:text="添加"
+            android:textColor="#ffffff" />
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="1dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#afffffff"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/ed_addForum_title"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="标题"
+            android:paddingBottom="30dp"
+            android:paddingTop="5dp"
+            android:textColor="#aa000000"
+            android:textColorHint="#AAAAAA"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#ECECEC" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/my_image_view"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:onClick="addPicture"
+            fresco:placeholderImage="@mipmap/addimage" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#afffffff"
+        android:orientation="vertical">
+
+        <EditText
+            android:paddingTop="5dp"
+            android:id="@+id/ed_addForum_content"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="请描述您的产品……"
+            android:paddingBottom="30dp"
+            android:textColor="#aa000000"
+            android:textColorHint="#AAAAAA"
+            android:textSize="16sp" />
+    </LinearLayout>
+</LinearLayout>
