@@ -35,6 +35,7 @@
                 android:layout_height="1dp"
                 android:layout_weight="1"/>
             <LinearLayout
+                android:id="@+id/lin_home_p1"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -55,6 +56,7 @@
                 android:layout_height="1dp"
                 android:layout_weight="1"/>
             <LinearLayout
+                android:id="@+id/lin_home_p2"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -74,6 +76,7 @@
                 android:layout_height="1dp"
                 android:layout_weight="1"/>
             <LinearLayout
+                android:id="@+id/lin_home_p3"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -112,6 +115,7 @@
                 android:layout_height="1dp"
                 android:layout_weight="1"/>
             <LinearLayout
+                android:id="@+id/lin_home_p4"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -132,6 +136,7 @@
                 android:layout_height="1dp"
                 android:layout_weight="1"/>
             <LinearLayout
+                android:id="@+id/lin_home_p5"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -151,6 +156,7 @@
                 android:layout_height="1dp"
                 android:layout_weight="1"/>
             <LinearLayout
+                android:id="@+id/lin_home_p6"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
