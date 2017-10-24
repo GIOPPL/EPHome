@@ -10,7 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.gioppl.ephome.FinalValue
+import android.widget.LinearLayout
 import com.gioppl.ephome.R
 import com.gioppl.ephome.forum.request.ForumRequest
 
@@ -24,6 +24,7 @@ class Forum: Fragment(){
     var mList:ArrayList<ForumBean> ?= ArrayList()
     var layoutManager :GridLayoutManager?=null
     var request:ForumRequest?=null
+    var lin_forum:LinearLayout?=null
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?)
             = inflater!!.inflate(R.layout.forum_pager, container, false)!!
 
@@ -35,6 +36,7 @@ class Forum: Fragment(){
     }
 
     private fun initView() {
+        lin_forum= activity.findViewById(R.id.lin_forum) as LinearLayout?
         im_add= activity.findViewById(R.id.im_top_add) as ImageView?
         im_add!!.setOnClickListener(View.OnClickListener {
             startActivity(Intent(activity, AddForumPost::class.java))
@@ -42,6 +44,7 @@ class Forum: Fragment(){
     }
 
     private fun initDate() {
+        lin_forum!!.visibility=View.GONE
         request= ForumRequest(activity,ForumRequest.ForumData { beanList ->
             for (bean in beanList){
                 mList!!.add(bean)

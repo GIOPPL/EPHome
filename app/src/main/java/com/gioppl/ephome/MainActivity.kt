@@ -7,14 +7,21 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.RadioGroup
 import android.widget.RelativeLayout
+import android.widget.TextView
 import com.avos.avoscloud.AVException
 import com.avos.avoscloud.AVObject
 import com.avos.avoscloud.SaveCallback
 import com.gioppl.ephome.HomePager.HomePager
 import com.gioppl.ephome.ep.Ep
+import com.gioppl.ephome.ep.SlidingDrawer
 import com.gioppl.ephome.forum.Forum
 import com.gioppl.ephome.policy.PolicyPager
-
+import com.yarolegovich.slidingrootnav.SlideGravity
+import com.yarolegovich.slidingrootnav.SlidingRootNav
+import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class MainActivity : AppCompatActivity() {
     var relative: RelativeLayout?=null
@@ -22,16 +29,26 @@ class MainActivity : AppCompatActivity() {
     var vp: BanSlidingViewPager? = null
     var mRadioGroup: RadioGroup? = null
     var mPagerList = ArrayList<Fragment>()
-
+    var mSliding: SlidingRootNav? =null
+    var tv_login: TextView?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        EventBus.getDefault().register(this)
         initView()
         initPager()
-//        for (i in 0..20){
-//            store()
-//        }
+        initSlidingDrawer()
+        SlidingDrawer(this)
+    }
+
+    private fun initSlidingDrawer() {
+        mSliding= SlidingRootNavBuilder(this)
+                .withMenuLayout(R.layout.sliding_drawer)
+                .withMenuOpened(false) //Initial menu opened/closed state. Default == false
+                .withMenuLocked(false) //If true, a user can't open or close the menu. Default == false.
+                .withGravity(SlideGravity.LEFT) //If LEFT you can swipe a menu from left to right, if RIGHT - the direction is opposite.
+                .inject();
     }
 
     private fun store() {
@@ -54,6 +71,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+        tv_login= findViewById(R.id.tv_sliding_login) as TextView?
         relative= findViewById(R.id.rea_main) as RelativeLayout?
         vp = findViewById(R.id.vp_main) as BanSlidingViewPager?
         var im_add = findViewById(R.id.im_top_add)
@@ -97,5 +115,14 @@ class MainActivity : AppCompatActivity() {
             override fun getCount(): Int = mPagerList.size
         }
         vp!!.adapter = pagerAdapt
+    }
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    fun helloEventBus(eventBus: Boolean) {
+        FinalValue.successMessage("成功接收到登陆界面传递的数据")
+        if (eventBus){
+            tv_login!!.text="退出登陆"
+        }else{
+            tv_login!!.text="立即登陆"
+        }
     }
 }

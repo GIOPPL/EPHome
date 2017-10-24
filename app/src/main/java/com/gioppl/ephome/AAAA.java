@@ -1,8 +1,9 @@
-package com.gioppl.ephome.forum.request;
+package com.gioppl.ephome;
 
 import android.app.Activity;
 
 import com.gioppl.ephome.forum.ForumBean;
+import com.gioppl.ephome.forum.request.ForumRequest;
 
 import java.util.ArrayList;
 

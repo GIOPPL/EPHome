@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.gioppl.ephome.R
+import org.greenrobot.eventbus.EventBus
 
 /**
  * Created by GIOPPL on 2017/10/6.
@@ -18,11 +19,12 @@ import com.gioppl.ephome.R
 class ForumAdapt(private var mList:ArrayList<ForumBean>,private var context:Context): RecyclerView.Adapter<ForumAdapt.MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder?, position: Int) {
-        var list=mList[position]
-        holder!!.sim_image!!.setImageURI(list.serverData.url)
-        holder.tv_title!!.text=list.serverData.title
-        holder.tv_content!!.text=list.serverData.content
+        var list=mList[position].serverData
+        holder!!.sim_image!!.setImageURI(list.url)
+        holder.tv_title!!.text=list.title
+        holder.tv_content!!.text=list.content
         holder.lin_forum!!.setOnClickListener(View.OnClickListener {
+            EventBus.getDefault().postSticky(mList[position]);
             context.startActivity(Intent(context,ForumDetails::class.java))
         })
     }

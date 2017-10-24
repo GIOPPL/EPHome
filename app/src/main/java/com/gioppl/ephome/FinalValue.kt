@@ -10,7 +10,8 @@ import android.widget.Toast
 class FinalValue {
     companion object {
         internal var LOAD_STA=false//登陆状态
-        internal var PRESONTER_NAME="GIOPPL"//登陆名
+        internal var USER_NAME="GIOPPL"//登陆名
+        internal var USER_PASSWORD="GIOPPL"//登陆名
         internal var ADDRESS="天津"
         public fun toast(context: Context,msg:String=context.packageName){
             Toast.makeText(context,msg,Toast.LENGTH_SHORT).show()

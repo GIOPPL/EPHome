@@ -57,6 +57,7 @@ dependencies {
     compile 'com.github.devlight.navigationtabstrip:navigationtabstrip:1.0.4'
     compile 'com.zzhoujay.markdown:markdown:1.0.5'
     compile 'com.github.pinguo-zhouwei:CustomPopwindow:2.1.1'
+    compile 'com.yarolegovich:sliding-root-nav:1.0.2'
 }
 repositories {
     mavenCentral()

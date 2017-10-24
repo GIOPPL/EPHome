@@ -24,7 +24,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name=".AppStart">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,6 +36,9 @@
         <activity android:name="com.zzti.fengyongge.imagepicker.PhotoPreviewActivity"></activity>//预览图片
         <activity android:name=".policy.PolicyDetail"/>
         <activity android:name=".HomePager.HomePointFather"/>
+        <activity android:name=".login.Login"/>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".forum.ForumDetails"/>
     </application>
 
 </manifest>
