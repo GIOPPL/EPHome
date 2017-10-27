@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.RadioGroup
 import android.widget.RelativeLayout
-import android.widget.TextView
 import com.avos.avoscloud.AVException
 import com.avos.avoscloud.AVObject
 import com.avos.avoscloud.SaveCallback
@@ -19,9 +18,6 @@ import com.gioppl.ephome.policy.PolicyPager
 import com.yarolegovich.slidingrootnav.SlideGravity
 import com.yarolegovich.slidingrootnav.SlidingRootNav
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
 
 class MainActivity : AppCompatActivity() {
     var relative: RelativeLayout?=null
@@ -30,12 +26,12 @@ class MainActivity : AppCompatActivity() {
     var mRadioGroup: RadioGroup? = null
     var mPagerList = ArrayList<Fragment>()
     var mSliding: SlidingRootNav? =null
-    var tv_login: TextView?=null
+    var login_status:LoginSuccess?=null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        EventBus.getDefault().register(this)
         initView()
         initPager()
         initSlidingDrawer()
@@ -71,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        tv_login= findViewById(R.id.tv_sliding_login) as TextView?
+
         relative= findViewById(R.id.rea_main) as RelativeLayout?
         vp = findViewById(R.id.vp_main) as BanSlidingViewPager?
         var im_add = findViewById(R.id.im_top_add)
@@ -116,13 +112,7 @@ class MainActivity : AppCompatActivity() {
         }
         vp!!.adapter = pagerAdapt
     }
-    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    fun helloEventBus(eventBus: Boolean) {
-        FinalValue.successMessage("成功接收到登陆界面传递的数据")
-        if (eventBus){
-            tv_login!!.text="退出登陆"
-        }else{
-            tv_login!!.text="立即登陆"
-        }
+    public interface LoginSuccess{
+        fun success(status:Boolean)
     }
 }

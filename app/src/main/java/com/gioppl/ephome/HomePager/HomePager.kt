@@ -33,11 +33,11 @@ class HomePager : Fragment(),View.OnClickListener {
     var banner: BannerView<Any>? = null
     var titles = arrayOf("光伏电网最新公告1", "光伏电网最新公告2", "光伏电网最新公告3", "光伏电网最新公告4", "光伏电网最新公告5", "光伏电网最新公告6")
     val list = ArrayList<BannerItem>()
-    val urls = arrayOf(//750x500
+    val urls = arrayOf(//750x500//
+            "http://ac-rxsnxjjw.clouddn.com/72ce8d49ddfcadc1ca2e.jpg",
             "http://ac-qzlvbisn.clouddn.com/0eaa95f4de78c97d7a7b.png",
-            "http://ac-qzlvbisn.clouddn.com/b3fb0ea7a8be97bff7c3.png",
-            "http://ac-qzlvbisn.clouddn.com/b1cabdeeb1791a498fb8.png",
-            "http://ac-qzlvbisn.clouddn.com/299d4a5bbf216ddc295e.png"
+            "http://ac-rxsnxjjw.clouddn.com/e143277c636b5deba3e3.jpg",
+            "http://ac-rxsnxjjw.clouddn.com/55b7191157d9367db99b.jpg"
     )
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?)

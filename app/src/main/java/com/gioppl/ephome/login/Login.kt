@@ -8,9 +8,11 @@ import android.widget.EditText
 import com.avos.avoscloud.AVException
 import com.avos.avoscloud.AVUser
 import com.avos.avoscloud.LogInCallback
+import com.gioppl.ephome.EventBusMain
 import com.gioppl.ephome.FinalValue
 import com.gioppl.ephome.MainActivity
 import com.gioppl.ephome.R
+import com.gioppl.ephome.downPhoto.DownHeadPhoto
 import org.greenrobot.eventbus.EventBus
 
 
@@ -37,15 +39,19 @@ class Login:AppCompatActivity(){
             AVUser.logInInBackground(username, psw, object : LogInCallback<AVUser>() {
                 override fun done(avUser: AVUser?, e: AVException?) {
                     if (e == null) {
-                        EventBus.getDefault().postSticky(true);
+                        DownHeadPhoto(avUser!!.get("headPhoto").toString())
+                        EventBus.getDefault().postSticky(EventBusMain(true,false));
                         FinalValue.LOAD_STA=true
                         FinalValue.USER_NAME=username!!
                         FinalValue.USER_PASSWORD=psw!!
+                        FinalValue.HEAD_PHOTO_URL=avUser.getString("headPhoto")
+                        FinalValue.ADMIN=avUser.getBoolean("admin");
                         this@Login.finish()
                         startActivity(Intent(this@Login, MainActivity::class.java))
                     } else {
-                        EventBus.getDefault().postSticky(false)
+                        EventBus.getDefault().postSticky(EventBusMain(false,false))
                         FinalValue.toast(this@Login,e.message!!)
+                        FinalValue.LOAD_STA=false
                     }
                 }
             })

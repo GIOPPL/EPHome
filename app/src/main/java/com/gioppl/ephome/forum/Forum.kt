@@ -11,8 +11,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import com.gioppl.ephome.FinalValue
 import com.gioppl.ephome.R
 import com.gioppl.ephome.forum.request.ForumRequest
+import com.gioppl.ephome.login.Login
 
 /**
  * Created by GIOPPL on 2017/10/6.
@@ -39,7 +41,12 @@ class Forum: Fragment(){
         lin_forum= activity.findViewById(R.id.lin_forum) as LinearLayout?
         im_add= activity.findViewById(R.id.im_top_add) as ImageView?
         im_add!!.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(activity, AddForumPost::class.java))
+            if(FinalValue.LOAD_STA){
+                startActivity(Intent(activity, AddForumPost::class.java))
+            }else{
+                FinalValue.toast(activity,"请登陆后再操作^_^\"")
+                startActivity(Intent(activity, Login::class.java))
+            }
         })
     }
 

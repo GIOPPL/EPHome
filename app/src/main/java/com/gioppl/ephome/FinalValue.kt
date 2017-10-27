@@ -13,6 +13,9 @@ class FinalValue {
         internal var USER_NAME="GIOPPL"//登陆名
         internal var USER_PASSWORD="GIOPPL"//登陆名
         internal var ADDRESS="天津"
+        internal var HEAD_PHOTO_ADD=""
+        internal var HEAD_PHOTO_URL=""
+        internal var ADMIN=false
         public fun toast(context: Context,msg:String=context.packageName){
             Toast.makeText(context,msg,Toast.LENGTH_SHORT).show()
         }
