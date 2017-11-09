@@ -16,7 +16,10 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import com.example.zhouwei.library.CustomPopWindow
 import com.gioppl.ephome.R
 import com.gioppl.ephome.method.LongPressLinkMovementMethod
@@ -109,14 +112,14 @@ class Ep : Fragment() {
                     } catch (e: IOException) {
                         Log.w(TAG, "can't get image", e)
                         drawable = ColorDrawable(Color.LTGRAY)
-                        drawable.setBounds(0, 0, tv!!.getWidth() - tv!!.getPaddingLeft() - tv!!.getPaddingRight(), 400)
+                        drawable.setBounds(0, 0, tv.getWidth() - tv.getPaddingLeft() - tv.getPaddingRight(), 400)
                     }
 
                     return drawable
                 }
             }, tv)
             val useTime = System.nanoTime() - time
-            tv!!.text = (spanned)
+            tv.text = (spanned)
         })
     }
 

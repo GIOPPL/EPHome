@@ -57,14 +57,13 @@ class HomePointFather :AppCompatActivity(){
                     } catch (e: IOException) {
                         Log.w(TAG, "can't get image", e)
                         drawable = ColorDrawable(Color.LTGRAY)
-                        drawable.setBounds(0, 0, tv!!.getWidth() - tv!!.getPaddingLeft() - tv!!.getPaddingRight(), 400)
+                        drawable.setBounds(0, 0, tv.getWidth() - tv.getPaddingLeft() - tv.getPaddingRight(), 400)
                     }
 
                     return drawable
                 }
             }, tv)
-            val useTime = System.nanoTime() - time
-            tv!!.text = (spanned)
+            tv.text = (spanned)
         })
     }
     @Throws(IOException::class)
