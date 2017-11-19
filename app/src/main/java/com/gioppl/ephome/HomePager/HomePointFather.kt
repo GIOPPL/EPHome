@@ -59,7 +59,6 @@ class HomePointFather :AppCompatActivity(){
                         drawable = ColorDrawable(Color.LTGRAY)
                         drawable.setBounds(0, 0, tv.getWidth() - tv.getPaddingLeft() - tv.getPaddingRight(), 400)
                     }
-
                     return drawable
                 }
             }, tv)

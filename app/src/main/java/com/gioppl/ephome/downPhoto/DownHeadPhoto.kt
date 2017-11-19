@@ -17,10 +17,10 @@ import java.util.*
  * Created by GIOPPL on 2017/4/30.
  */
 
-class DownHeadPhoto(url: String?) {
+class DownHeadPhoto(url: String?) {//
     init {
         val photoID = decomposeUrl(url)//图片储存的ID
-        getPhoto(url, photoID)
+         getPhoto(url, photoID)
     }
 
     private fun getPhoto(url: String?, objectId: String?) {

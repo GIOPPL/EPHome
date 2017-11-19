@@ -20,6 +20,7 @@ public class AAAA extends Activity{
                 ArrayList<ForumBean> beanList2=beanList;
                 ArrayList<ForumBean> beanList3=beanList;
                 ArrayList<ForumBean> beanList4=beanList;
+
             }
         });
     }

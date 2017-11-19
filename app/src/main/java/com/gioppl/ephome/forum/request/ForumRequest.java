@@ -9,6 +9,7 @@ import com.avos.avoscloud.AVCloudQueryResult;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.CloudQueryCallback;
+import com.gioppl.ephome.FinalValue;
 import com.gioppl.ephome.forum.ForumBean;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -30,6 +31,8 @@ public class ForumRequest {
         this.mContext=mContext;
         this.mCircleData=mCircleData;
         getForumDate();
+        System.out.println("无敌泡泡龙，，李嘉欣");
+
     }
 
     public void getForumDate(){
@@ -41,6 +44,7 @@ public class ForumRequest {
                     Log.i("ERROR",e.getMessage()+"--"+e.getCode());
                 }else {
                     String s1=avCloudQueryResult.getResults().toString();
+                    FinalValue.Companion.successMessage(s1);
                     beanList=FormatCircleBean(s1);
                     Message msg=new Message();
                     msg.arg1=0x1;
@@ -58,6 +62,7 @@ public class ForumRequest {
         Type listType = new TypeToken<List<ForumBean>>() {}.getType();
         Gson gson=new Gson();
         list=gson.fromJson(S_circle, listType);
+        System.out.println("无敌泡泡龙，，李嘉欣");
         return list;
     }
 
