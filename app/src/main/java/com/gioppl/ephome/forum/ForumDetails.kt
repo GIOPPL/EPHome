@@ -23,7 +23,6 @@ class ForumDetails :AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.forum_detail)
-
         initView()
         EventBus.getDefault().register(this)
     }
@@ -38,10 +37,9 @@ class ForumDetails :AppCompatActivity() {
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     fun helloEventBus(eventBus: ForumBean) {
-        val bean=eventBus.serverData
-        tv_title!!.text=bean.title
-        tv_content!!.text=bean.content
-        tv_phone!!.text=bean.person
+        tv_title!!.text=eventBus.subject
+        tv_content!!.text=eventBus.message
+        tv_phone!!.text=eventBus.telephone
     }
     public fun back(v: View){
         finish()

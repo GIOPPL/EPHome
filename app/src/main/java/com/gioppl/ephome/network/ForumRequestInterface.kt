@@ -1,12 +1,14 @@
-package com.gioppl.powergrid.netWork
+package com.gioppl.ephome.network
 
-import com.gioppl.ephome.network.entity.ForumEntity
 import retrofit2.http.GET
+import retrofit2.http.Query
 import rx.Observable
 
 /**
- * Created by GIOPPL on 2017/8/25.
+ * Created by GIOPPL on 2017/11/21.
  */
-interface ForumRequestInterface {
-    @GET("overView.do")fun getForumData(): Observable<ForumEntity>
+
+interface ForumRequestInterface{
+    @GET("ServletDiscuzLimit ")
+    fun data(@Query("from") start: Int, @Query("to") end: Int): Observable<ForumEntity>
 }

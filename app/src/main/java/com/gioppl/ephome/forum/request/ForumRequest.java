@@ -31,7 +31,6 @@ public class ForumRequest {
         this.mContext=mContext;
         this.mCircleData=mCircleData;
         getForumDate();
-        System.out.println("无敌泡泡龙，，李嘉欣");
 
     }
 
@@ -62,7 +61,6 @@ public class ForumRequest {
         Type listType = new TypeToken<List<ForumBean>>() {}.getType();
         Gson gson=new Gson();
         list=gson.fromJson(S_circle, listType);
-        System.out.println("无敌泡泡龙，，李嘉欣");
         return list;
     }
 

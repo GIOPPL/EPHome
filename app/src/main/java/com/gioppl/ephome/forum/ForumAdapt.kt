@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.facebook.drawee.view.SimpleDraweeView
+import com.gioppl.ephome.FinalValue
 import com.gioppl.ephome.R
 import org.greenrobot.eventbus.EventBus
 
@@ -16,15 +17,14 @@ import org.greenrobot.eventbus.EventBus
  * Created by GIOPPL on 2017/10/6.
  * http://ac-rxsnxjjw.clouddn.com/2e04c777b75c9b016c12.png
  */
-class ForumAdapt(private var mList:ArrayList<ForumBean>,private var context:Context): RecyclerView.Adapter<ForumAdapt.MyViewHolder>() {
+class ForumAdapt(private var mList:ArrayList<ForumBean>?, private var context:Context): RecyclerView.Adapter<ForumAdapt.MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder?, position: Int) {
-        var list=mList[position].serverData
-        holder!!.sim_image!!.setImageURI(list.url)
-        holder.tv_title!!.text=list.title
-        holder.tv_content!!.text=list.content
+        holder!!.sim_image!!.setImageURI("http://ac-rxsnxjjw.clouddn.com/LBT7wbbfWF0bIvzwbH7kmF0J62OpeQlaNTx7bSp3.jpg")
+        holder.tv_title!!.text=mList!![position].subject
+        holder.tv_content!!.text=mList!![position].message
         holder.lin_forum!!.setOnClickListener(View.OnClickListener {
-            EventBus.getDefault().postSticky(mList[position]);
+            EventBus.getDefault().postSticky(mList!![position]);
             context.startActivity(Intent(context,ForumDetails::class.java))
         })
     }
@@ -32,7 +32,15 @@ class ForumAdapt(private var mList:ArrayList<ForumBean>,private var context:Cont
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int)
             = MyViewHolder(LayoutInflater.from(parent!!.context).inflate(R.layout.forum_item,parent,false))
 
-    override fun getItemCount()=if (mList==null) 0 else mList.size
+    override fun getItemCount():Int{
+        if (mList == null) {
+            FinalValue.errorMessage("获取到的mList的size是0")
+            return 0
+        }else{
+            FinalValue.errorMessage("获取到的mList的size是"+mList!!.size)
+            return mList!!.size
+        }
+    }
 
     class MyViewHolder(itemView:View): RecyclerView.ViewHolder(itemView){
         var tv_title: TextView?=null

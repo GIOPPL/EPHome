@@ -6,158 +6,88 @@ package com.gioppl.ephome.forum;
 
 public class ForumBean {
     /**
-     * @type : com.avos.avoscloud.AVObject
-     * objectId : 59d86b8d128fe1529c70d023
-     * updatedAt : 2017-10-07T05:52:13.229Z
-     * createdAt : 2017-10-07T05:52:13.229Z
-     * className : Forum
-     * serverData : {"@type":"java.util.concurrent.ConcurrentHashMap","add":"天津","content":"test content 0","url":"http://ac-rxsnxjjw.clouddn.com/9c2dc624a05360229896.jpg","id":13,"title":"test title 0","person":"PPL"}
+     * telephone :
+     * address :
+     * authorid : 0
+     * dataline :
+     * subject : test
+     * message : test6666:victory:
+
+     * author : test
      */
 
-    private String objectId;
-    private String updatedAt;
-    private String createdAt;
-    private String className;
-    private ServerDataBean serverData;
 
-    public String getObjectId() {
-        return objectId;
+    private String telephone;
+    private String address;
+    private int authorid;
+    private String dataline;
+    private String subject;
+    private String message;
+    private String author;
+
+    public ForumBean(String telephone, String address, int authorid, String dataline, String subject, String message, String author) {
+        this.telephone = telephone;
+        this.address = address;
+        this.authorid = authorid;
+        this.dataline = dataline;
+        this.subject = subject;
+        this.message = message;
+        this.author = author;
     }
 
-    public void setObjectId(String objectId) {
-        this.objectId = objectId;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public String getUpdatedAt() {
-        return updatedAt;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+    public String getAddress() {
+        return address;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
+    public int getAuthorid() {
+        return authorid;
     }
 
-    public String getClassName() {
-        return className;
+    public void setAuthorid(int authorid) {
+        this.authorid = authorid;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
+    public String getDataline() {
+        return dataline;
     }
 
-    public ServerDataBean getServerData() {
-        return serverData;
+    public void setDataline(String dataline) {
+        this.dataline = dataline;
     }
 
-    public void setServerData(ServerDataBean serverData) {
-        this.serverData = serverData;
+    public String getSubject() {
+        return subject;
     }
 
-    public static class ServerDataBean {
-        /**
-         * @type : java.util.concurrent.ConcurrentHashMap
-         * add : 天津
-         * content : test content 0
-         * url : http://ac-rxsnxjjw.clouddn.com/9c2dc624a05360229896.jpg
-         * id : 13
-         * title : test title 0
-         * person : PPL
-         */
-
-        private String add;
-        private String content;
-        private String url;
-        private int id;
-        private String title;
-        private String person;
-
-        public String getAdd() {
-            return add;
-        }
-
-        public void setAdd(String add) {
-            this.add = add;
-        }
-
-        public String getContent() {
-            return content;
-        }
-
-        public void setContent(String content) {
-            this.content = content;
-        }
-
-        public String getUrl() {
-            return url;
-        }
-
-        public void setUrl(String url) {
-            this.url = url;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getPerson() {
-            return person;
-        }
-
-        public void setPerson(String person) {
-            this.person = person;
-        }
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
-//    private String title;
-//    private String content;
-//    private String imageUrl;
-//
-//    public ForumBean(String title, String content, String imageUrl) {
-//        this.title = title;
-//        this.content = content;
-//        this.imageUrl = imageUrl;
-//    }
-//
-//    public String getTitle() {
-//        return title;
-//    }
-//
-//    public void setTitle(String title) {
-//        this.title = title;
-//    }
-//
-//    public String getContent() {
-//        return content;
-//    }
-//
-//    public void setContent(String content) {
-//        this.content = content;
-//    }
-//
-//    public String getImageUrl() {
-//        return imageUrl;
-//    }
-//
-//    public void setImageUrl(String imageUrl) {
-//        this.imageUrl = imageUrl;
-//    }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 }
