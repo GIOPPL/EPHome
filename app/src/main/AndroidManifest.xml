@@ -32,13 +32,24 @@
             </intent-filter>
         </activity>
         <activity android:name=".forum.AddForumPost"/>
-        <activity android:name="com.zzti.fengyongge.imagepicker.PhotoSelectorActivity"></activity>//选择图片
-        <activity android:name="com.zzti.fengyongge.imagepicker.PhotoPreviewActivity"></activity>//预览图片
+        <activity android:name="com.zzti.fengyongge.imagepicker.PhotoSelectorActivity"></activity>
+        <activity android:name="com.zzti.fengyongge.imagepicker.PhotoPreviewActivity"></activity>
         <activity android:name=".policy.PolicyDetail"/>
         <activity android:name=".HomePager.HomePointFather"/>
         <activity android:name=".login.Login"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".forum.ForumDetails"/>
+        <activity android:name=".login.Register"/>
+        <activity android:name=".login.ReceiveMessage"/>
+        <activity android:name=".login.ConfirmCode"/>
+        <!--<activity-->
+            <!--android:name="com.mob.tools.MobUIShell"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustResize"/>-->
+        <!--&lt;!&ndash;&lt;!&ndash; 通过AndroidManifest配置AppKey和AppSecret，如果你选择通过代码配置，则不需要配置以下meta-data &ndash;&gt;&ndash;&gt;-->
+        <!--<meta-data android:name="Mob-AppKey" android:value="1723697e0be06"/>-->
+        <!--<meta-data android:name="Mob-AppSecret" android:value="6574cd70260e9ad5d72e9b35e29210b6"/>-->
     </application>
 
 </manifest>

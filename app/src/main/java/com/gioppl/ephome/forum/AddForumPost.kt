@@ -47,8 +47,7 @@ class AddForumPost : AppCompatActivity() {
         when (requestCode) {
             0 -> if (data != null) {
                 val paths = data.extras.getSerializable("photos") as List<String>//path是选择拍照或者图片的地址数组
-                //处理代码
-                FinalValue().successMessage(paths[0]);
+                FinalValue().successMessage(paths[0])
                 url = paths[0]
                 im_picture!!.setImageURI("file://" + url)
             }

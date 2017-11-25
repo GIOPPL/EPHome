@@ -16,6 +16,7 @@ class FinalValue {
         internal var HEAD_PHOTO_ADD=""
         internal var HEAD_PHOTO_URL=""
         internal var ADMIN=false
+        private var FORUM_REFRESH_FLAG=0;
         public fun toast(context: Context,msg:String=context.packageName){
             Toast.makeText(context,msg,Toast.LENGTH_SHORT).show()
         }
@@ -24,6 +25,13 @@ class FinalValue {
         }
         public fun successMessage(s:String="SUCCESS"){
             Log.i("SUCCESS",s)
+        }
+        public fun getForumRefreshFlag():Int{
+            FORUM_REFRESH_FLAG+=5
+            return FORUM_REFRESH_FLAG-5
+        }
+        public fun clearForumRefreshFlag(){
+            FORUM_REFRESH_FLAG=0;
         }
     }
 

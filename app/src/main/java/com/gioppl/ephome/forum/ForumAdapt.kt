@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.facebook.drawee.view.SimpleDraweeView
-import com.gioppl.ephome.FinalValue
 import com.gioppl.ephome.R
 import org.greenrobot.eventbus.EventBus
 
@@ -34,10 +33,8 @@ class ForumAdapt(private var mList:ArrayList<ForumBean>?, private var context:Co
 
     override fun getItemCount():Int{
         if (mList == null) {
-            FinalValue.errorMessage("获取到的mList的size是0")
             return 0
         }else{
-            FinalValue.errorMessage("获取到的mList的size是"+mList!!.size)
             return mList!!.size
         }
     }
