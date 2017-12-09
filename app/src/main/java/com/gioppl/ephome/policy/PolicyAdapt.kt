@@ -10,21 +10,21 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.gioppl.ephome.R
 import com.gioppl.ephome.policy.PolicyDetail
-import com.gioppl.ephome.policy.PolicyModel
+import com.gioppl.ephome.policy.PolicyEntity
 import org.greenrobot.eventbus.EventBus
 
 /**
  * Created by GIOPPL on 2017/10/6.
  * http://ac-rxsnxjjw.clouddn.com/2e04c777b75c9b016c12.png
  */
-class PolicyAdapt(private var mList:ArrayList<PolicyModel>, private var context:Context): RecyclerView.Adapter<PolicyAdapt.MyPolicyViewHolder>() {
+class PolicyAdapt(private var mList:ArrayList<PolicyEntity>, private var context:Context): RecyclerView.Adapter<PolicyAdapt.MyPolicyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyPolicyViewHolder, position: Int) {
-        val mod=mList[position]
-        holder.tv_title!!.text=mList[position].title
-        holder.tv_msg!!.text=mList[position].msg
+//        val mod=mList[position]
+        holder.tv_title!!.text=mList[position].ztitle
+        holder.tv_msg!!.visibility=View.GONE
         holder.lin!!.setOnClickListener(View.OnClickListener {
-            EventBus.getDefault().postSticky(PolicyModel(mod.title,mod.msg,mod.content));
+            EventBus.getDefault().postSticky(mList[position]);
             context.startActivity(Intent(context,PolicyDetail::class.java))
         })
     }
@@ -45,4 +45,7 @@ class PolicyAdapt(private var mList:ArrayList<PolicyModel>, private var context:
         }
     }
 
+    override fun hashCode(): Int {
+        return 222222
+    }
 }

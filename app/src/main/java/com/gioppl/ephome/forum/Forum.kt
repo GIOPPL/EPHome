@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.StaggeredGridLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,53 +13,53 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.gioppl.ephome.FinalValue
+import com.gioppl.ephome.PostRequest
 import com.gioppl.ephome.R
-import com.gioppl.ephome.login.Login
-import com.gioppl.ephome.network.ForumEntity
-import com.gioppl.ephome.network.ForumRequestInterface
-import com.xlibs.xrv.LayoutManager.XGridLayoutManager
+import com.gioppl.ephome.sliding.login.Login
+import com.gioppl.ephome.voice.VoiceActivity
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.xlibs.xrv.LayoutManager.XLinearLayoutManager
-import com.xlibs.xrv.LayoutManager.XStaggeredGridLayoutManager
 import com.xlibs.xrv.listener.OnLoadMoreListener
 import com.xlibs.xrv.listener.OnRefreshListener
 import com.xlibs.xrv.view.XRecyclerView
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
-import rx.Subscriber
-import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
+import java.util.HashMap
+import kotlin.collections.ArrayList
 
 /**
  * Created by GIOPPL on 2017/10/6.
  */
 class Forum : Fragment() {
 
-    private var isFirstLoad = true
     private var mHeaderView: View? = null
     private var mFooterView: View? = null
     var im_add: ImageView? = null
+    var im_search: ImageView? = null
     var mXRecyclerView: XRecyclerView? = null
     var mAdapt: ForumAdapt? = null
-    var mList: ArrayList<ForumBean>? = ArrayList()
+    var mList = ArrayList<ForumBean>()
     var layoutManager: GridLayoutManager? = null
     var lin_forum: LinearLayout? = null
-    var entityList: ForumEntity? = null
+    var from = 1;
+    var to = 10;
+    private var firstLoad=true
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?)
             = inflater!!.inflate(R.layout.forum_pager, container, false)!!
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        from = 10
+        to = 20
         initView()
         initRV()
-//        initDate()
-        if (isFirstLoad) getDataRefresh(FinalValue.getForumRefreshFlag(), FinalValue.getForumRefreshFlag() + 5)
+        initDate()
     }
 
     private fun initView() {
         lin_forum = activity.findViewById(R.id.lin_forum) as LinearLayout?
         im_add = activity.findViewById(R.id.im_top_add) as ImageView?
+        im_search = activity.findViewById(R.id.im_top_search) as ImageView?
         im_add!!.setOnClickListener(View.OnClickListener {
             if (FinalValue.LOAD_STA) {
                 startActivity(Intent(activity, AddForumPost::class.java))
@@ -68,30 +68,74 @@ class Forum : Fragment() {
                 startActivity(Intent(activity, Login::class.java))
             }
         })
+        im_search!!.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(activity, VoiceActivity::class.java))
+        })
     }
 
     private fun initDate() {
-//        lin_forum!!.visibility = View.GONE
-//        request = ForumRequest(activity, ForumRequest.ForumData {beanList ->
-//            for (bean in beanList) {
-//                mList!!.add(bean)
-//                mAdapt!!.notifyDataSetChanged()
-//            }
-//        })
+        val map = HashMap<String, Any>()
+        map.put("from", 0)
+        map.put("to", 10);
+        PostRequest(map, "http://116.196.91.8:8080/webtest/ServletDxlFindAll", PostRequest.POST, object : PostRequest.RequestCallback {
+            override fun success(back: String) {
+                val list = formatForumBean(back)
+                mList.clear()
+                for (i in list) {
+                    mList.add(0, i)
+                }
+                from++
+                lin_forum!!.visibility = View.GONE
+                mAdapt!!.notifyDataSetChanged()
+// /                if (mList.size < 5)
+//                    mXRecyclerView!!.scrollToPosition(2)
+//                else
+//                    mXRecyclerView!!.scrollToPosition(mList.size - 1)
+                    mXRecyclerView!!.scrollToPosition(1)
+            }
+
+            override fun error(back: String) {
+                Log.i("失败", back)
+            }
+
+            override fun getBeanList(bean: java.util.ArrayList<Any>) {
+
+            }
+        })
+    }
+
+    private fun loadMoreDate() {
+        val map = HashMap<String, Any>()
+        map.put("from", from)
+        map.put("to", to)
+        PostRequest(map, "http://116.196.91.8:8080/webtest/ServletPPLLimit", PostRequest.POST, object : PostRequest.RequestCallback {
+            override fun success(back: String) {
+                val list = formatForumBean(back)
+                for (i in list) {
+                    mList.add(0,i)
+                }
+                from += 10
+                to += 10
+                lin_forum!!.visibility = View.GONE
+                mAdapt!!.notifyDataSetChanged()
+            }
+
+            override fun error(back: String) {
+                Log.i("失败", back)
+            }
+
+            override fun getBeanList(bean: java.util.ArrayList<Any>) {
+
+            }
+        })
     }
 
     //初始化recyclerView
     private fun initRV() {
         mXRecyclerView = activity.findViewById(R.id.rv_forum) as XRecyclerView?
         mAdapt = ForumAdapt(mList, activity)
-//        layoutManager = GridLayoutManager(activity, 1);//set hte number of column on this boundary
-//        mRV!!.layoutManager = layoutManager
-//        layoutManager!!.orientation = OrientationHelper.VERTICAL
-//        mRV!!.adapter = mAdapt
         val xLinearLayoutManager = XLinearLayoutManager(activity)
-        val xGridLayoutManager = XGridLayoutManager(activity, 2)
-        val xStaggeredGridLayoutManager = XStaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        mXRecyclerView!!.layoutManager = xLinearLayoutManager
+        mXRecyclerView!!.layoutManager = xLinearLayoutManager as RecyclerView.LayoutManager?
         mHeaderView = LayoutInflater.from(activity).inflate(R.layout.custom_header_view, null)
         mFooterView = LayoutInflater.from(activity).inflate(R.layout.footer_view, null)
         mXRecyclerView!!.addHeaderView(mHeaderView, 50)
@@ -103,7 +147,7 @@ class Forum : Fragment() {
     }
 
     private fun refreshData() {
-        getDataRefresh(FinalValue.getForumRefreshFlag(), FinalValue.getForumRefreshFlag() + 5)
+        initDate()
         Handler().postDelayed({
             mXRecyclerView!!.refreshComplate()
         }, 1000)
@@ -111,90 +155,20 @@ class Forum : Fragment() {
     }
 
     private fun loadMoreData() {
-        getDataLoad(FinalValue.getForumRefreshFlag(), FinalValue.getForumRefreshFlag() + 5)
+        loadMoreDate()
         Handler().postDelayed({
             mXRecyclerView!!.loadMoreComplate()
         }, 1000)
     }
 
-//    /**
-//     * 在界面能看到的时候加载数据
-//     */
-//    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-//        super.setUserVisibleHint(isVisibleToUser)
-//        FinalValue.successMessage("setUserVisibleHint:$isVisibleToUser")
-//        if ((!isFirstLoad)&&isVisibleToUser) getData(0,5)
-//    }
+    private fun formatForumBean(json: String): java.util.ArrayList<ForumBean> {
+        val list: java.util.ArrayList<ForumBean>
+        val listType = object : TypeToken<List<ForumBean>>() {
 
-
-    //从后台获取数据
-    fun getDataRefresh(form: Int, to: Int) {
-        var moviesUrl = "http://116.196.91.8:8080/webtest/"
-        var retrofit = Retrofit
-                .Builder().baseUrl(moviesUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build()
-        var myNet = retrofit.create(ForumRequestInterface::class.java)
-        myNet.data(form, to)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : Subscriber<ForumEntity>() {
-                    override fun onError(e: Throwable?) {
-                        Log.i("error", e!!.message)
-                    }
-
-                    override fun onCompleted() {
-                    }
-
-                    override fun onNext(t: ForumEntity) {
-                        FinalValue.successMessage("获取论坛成功")
-
-                        entityList = t;
-//                        mList!!.clear()
-                        for (i in t.data) {
-                            val bean = ForumBean(i.telephone, i.address, i.authorid, i.dataline, i.subject, i.message, i.author)
-                            mList!!.add(bean);
-                        }
-                        mAdapt!!.notifyDataSetChanged()
-                        lin_forum!!.visibility = View.GONE
-                        FinalValue.clearForumRefreshFlag()
-                    }
-                })
+        }.type
+        val gson = Gson()
+        list = gson.fromJson<java.util.ArrayList<ForumBean>>(json, listType)
+        return list
     }
 
-    //从后台获取数据
-    fun getDataLoad(form: Int, to: Int) {
-        var moviesUrl = "http://116.196.91.8:8080/webtest/"
-        var retrofit = Retrofit
-                .Builder().baseUrl(moviesUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build()
-        var myNet = retrofit.create(ForumRequestInterface::class.java)
-        myNet.data(form, to)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : Subscriber<ForumEntity>() {
-                    override fun onError(e: Throwable?) {
-                        Log.i("error", e!!.message)
-                    }
-
-                    override fun onCompleted() {
-
-                    }
-
-                    override fun onNext(t: ForumEntity) {
-                        Log.i("success", "成功")
-                        FinalValue.successMessage("获取论坛成功")
-                        entityList = t!!;
-                        for (i in t!!.data) {
-                            val bean = ForumBean(i.telephone, i.address, i.authorid, i.dataline, i.subject, i.message, i.author)
-                            mList!!.add(bean);
-                        }
-                        mAdapt!!.notifyDataSetChanged()
-                        lin_forum!!.visibility = View.GONE
-                    }
-                })
-    }
 }

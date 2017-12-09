@@ -16,28 +16,28 @@
             android:id="@+id/rbtn_main_one"
             style="@style/bottomStyle"
             android:drawableTop="@drawable/rbtn_bottom_home"
-            android:textColor="@drawable/rbtn_bottom_text"
-            android:text="首页" />
+            android:text="首页"
+            android:textColor="@drawable/rbtn_bottom_text" />
 
         <RadioButton
             android:id="@+id/rbtn_main_two"
             style="@style/bottomStyle"
             android:drawableTop="@drawable/rbtn_bottom_policy"
-            android:textColor="@drawable/rbtn_bottom_text"
-            android:text="资讯"/>
+            android:text="资讯"
+            android:textColor="@drawable/rbtn_bottom_text" />
 
         <RadioButton
             android:id="@+id/rbtn_main_three"
             style="@style/bottomStyle"
             android:drawableTop="@drawable/rbtn_bottom_ep"
-            android:textColor="@drawable/rbtn_bottom_text"
-            android:text="变废为宝" />
+            android:text="变废为宝"
+            android:textColor="@drawable/rbtn_bottom_text" />
 
         <RadioButton
             android:id="@+id/rbtn_main_four"
             style="@style/bottomStyle"
             android:drawableTop="@drawable/rbtn_bottom_forum"
-            android:textColor="@drawable/rbtn_bottom_text"
-            android:text="论坛" />
+            android:text="你需我求"
+            android:textColor="@drawable/rbtn_bottom_text" />
     </RadioGroup>
 </LinearLayout>

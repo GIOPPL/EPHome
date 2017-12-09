@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.OrientationHelper
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,15 +14,7 @@ import android.widget.LinearLayout
 import com.gioppl.ephome.FinalValue
 import com.gioppl.ephome.R
 import com.gioppl.ephome.forum.request.ForumRequest
-import com.gioppl.ephome.login.Login
-import com.gioppl.ephome.network.ForumEntity
-import com.gioppl.ephome.network.ForumRequestInterface
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
-import rx.Subscriber
-import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
+import com.gioppl.ephome.sliding.login.Login
 
 /**
  * Created by GIOPPL on 2017/10/6.
@@ -38,7 +29,6 @@ class Forum2 : Fragment() {
     var layoutManager: GridLayoutManager? = null
     var request: ForumRequest? = null
     var lin_forum: LinearLayout? = null
-    var entityList:ForumEntity?=null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?)
             = inflater!!.inflate(R.layout.forum_pager, container, false)!!
@@ -48,7 +38,7 @@ class Forum2 : Fragment() {
         initView()
         initRV()
 //        initDate()
-        getData()
+//        getData()
     }
 
     private fun initView() {
@@ -88,38 +78,38 @@ class Forum2 : Fragment() {
         super.onResume()
     }
 
-    fun getData() {
-        var moviesUrl="http://116.196.91.8:8080/webtest/"
-        var retrofit= Retrofit
-                .Builder().baseUrl(moviesUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build()
-        var myNet=retrofit.create(ForumRequestInterface::class.java)
-        myNet.data(0,5)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : Subscriber<ForumEntity>() {
-                    override fun onError(e: Throwable?) {
-                        Log.i("error",e!!.message)
-                    }
-
-                    override fun onCompleted() {
-                    }
-
-                    override fun onNext(t: ForumEntity) {
-                        Log.i("success","成功")
-                        FinalValue.successMessage("获取论坛成功")
-                        lin_forum!!.visibility = View.GONE
-                        entityList=t!!;
-                        for (i in t!!.data){
-                            val bean=ForumBean(i. telephone, i. address, i. authorid, i. dataline, i. subject, i. message, i. author)
-                            mList!!.add(bean);
-                        }
-                        mAdapt!!.notifyDataSetChanged()
-                    }
-                })
-
-
-    }
+//    fun getData() {
+//        var moviesUrl="http://116.196.91.8:8080/webtest/"
+//        var retrofit= Retrofit
+//                .Builder().baseUrl(moviesUrl)
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+//                .build()
+//        var myNet=retrofit.create(ForumRequestInterface::class.java)
+//        myNet.data(0,5)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(object : Subscriber<ForumEntity>() {
+//                    override fun onError(e: Throwable?) {
+//                        Log.i("error",e!!.message)
+//                    }
+//
+//                    override fun onCompleted() {
+//                    }
+//
+//                    override fun onNext(t: ForumEntity) {
+//                        Log.i("success","成功")
+//                        FinalValue.successMessage("获取论坛成功")
+//                        lin_forum!!.visibility = View.GONE
+//                        entityList=t!!;
+//                        for (i in t!!.data){
+//                            val bean=ForumBean(i. telephone, i. address, i. authorid, i. dataline, i. subject, i. message, i. author)
+//                            mList!!.add(bean);
+//                        }
+//                        mAdapt!!.notifyDataSetChanged()
+//                    }
+//                })
+//
+//
+//    }
 }

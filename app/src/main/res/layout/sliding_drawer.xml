@@ -29,7 +29,7 @@
                 android:paddingLeft="20dp">
 
                 <com.facebook.drawee.view.SimpleDraweeView
-                    android:id="@+id/fim_sliding_head"
+                    android:id="@+id/sim_sliding_head"
                     android:layout_width="120dp"
                     android:layout_height="140dp"
                     android:paddingTop="20dp"
@@ -57,6 +57,7 @@
                     android:paddingLeft="15dp">
 
                     <TextView
+                        android:id="@+id/tv_sliding_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="GIOPPL"
@@ -67,7 +68,7 @@
                         android:id="@+id/tv_sliding_admin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="管理员"
+                        android:text="普通会员"
                         android:textColor="#fefefe"
                         android:textSize="15dp" />
                 </LinearLayout>

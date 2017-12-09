@@ -11,6 +11,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -18,6 +19,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 
     //为了解决部分第三方库重复打包了META-INF的问题
     packagingOptions{
@@ -75,6 +77,10 @@ dependencies {
     compile files('libs/MobTools-2017.0607.1736.jar')
     compile name: 'SMSSDK-3.0.0', ext: 'aar'
     compile name: 'SMSSDKGUI-3.0.0', ext: 'aar'
+    compile files('libs/bdasr_V3_20170929_c8984af.jar')
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.quinny898.library.persistentsearch:library:1.1.0-SNAPSHOT'
+    compile 'ch.ielse:switchbutton:1.0.0'
 }
 repositories {
     mavenCentral()

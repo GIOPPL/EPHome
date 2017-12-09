@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/lin_new2"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="vertical"
@@ -24,6 +25,7 @@
                 android:src="@mipmap/sexangle_yellow" />
 
             <TextView
+                android:id="@+id/tv_new2_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10sp"
@@ -36,15 +38,11 @@
             android:layout_height="30dp"
             android:orientation="horizontal">
             <TextView
+                android:id="@+id/tv_new2_date"
+                android:paddingLeft="130dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2017-3-19"/>
-
-            <TextView
-                android:paddingLeft="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="董晓龙"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

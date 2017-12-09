@@ -1,113 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/menu_pop_bg"
-    android:padding="10dp"
-    >
+    android:orientation="vertical"
+    android:padding="10dp">
+
     <LinearLayout
         android:id="@+id/menu1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center"
-        >
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@mipmap/ic_icon1"
-            />
+            android:src="@mipmap/ic_icon1" />
+
         <TextView
+            android:id="@+id/tv_menu_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/darker_gray"
-            android:text="猪粪"
             android:layout_marginLeft="10dp"
-            />
+            android:text="猪粪"
+            android:textColor="@android:color/darker_gray" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/menu2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_marginTop="10dp"
-        >
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@mipmap/ic_icon2"
-            />
+            android:src="@mipmap/ic_icon2" />
+
         <TextView
+            android:id="@+id/tv_menu_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/darker_gray"
-            android:text="鸡粪"
             android:layout_marginLeft="10dp"
-            />
+            android:text="鸡粪"
+            android:textColor="@android:color/darker_gray" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/menu3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_marginTop="10dp"
-        >
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@mipmap/icon_item3"
-            />
+            android:src="@mipmap/icon_item3" />
+
         <TextView
+            android:id="@+id/tv_menu_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/darker_gray"
-            android:text="稻谷皮"
             android:layout_marginLeft="10dp"
-            />
+            android:text="稻谷皮"
+            android:textColor="@android:color/darker_gray" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/menu4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_marginTop="10dp"
-        >
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@mipmap/ic_icon4"
-            />
+            android:src="@mipmap/ic_icon4" />
+
         <TextView
+            android:id="@+id/tv_menu_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/darker_gray"
-            android:text="兔屎"
             android:layout_marginLeft="10dp"
-            />
+            android:text="兔屎"
+            android:textColor="@android:color/darker_gray" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/menu5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_marginTop="10dp"
-        >
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@mipmap/ic_icon5"
-            />
+            android:src="@mipmap/ic_icon5" />
+
         <TextView
+            android:id="@+id/tv_menu_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/darker_gray"
-            android:text="猫屎"
             android:layout_marginLeft="10dp"
-            />
+            android:text="猫屎"
+            android:textColor="@android:color/darker_gray" />
     </LinearLayout>
 </LinearLayout>

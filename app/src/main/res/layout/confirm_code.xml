@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <include layout="@layout/top_main" />
 
     <LinearLayout
@@ -27,50 +28,63 @@
             android:background="#000000" />
 
         <EditText
-            android:hint="请填写密码"
+            android:id="@+id/ed_confirm_pwd1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
-            android:background="@null" />
+            android:background="@null"
+            android:hint="请填写密码" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_margin="10dp"
         android:background="@drawable/shape_lucency"
         android:orientation="horizontal">
+
         <ImageView
             android:id="@+id/im_phone"
-            android:layout_marginLeft="20dp"
-            android:layout_gravity="center_vertical"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@mipmap/message_000000"/>
-        <View
-            android:layout_marginLeft="20dp"
             android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:src="@mipmap/message_000000" />
+
+        <View
             android:layout_width="1dp"
             android:layout_height="30dp"
-            android:background="#000000"/>
-        <EditText
-            android:hint="确认你的密码"
-            android:id="@+id/ed_receive_phoneNumber"
-            android:background="@null"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="20dp"
+            android:background="#000000" />
+
+        <EditText
+            android:id="@+id/ed_confirm_pwd2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="确认你的密码" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:background="#000000" />
     </LinearLayout>
 
+
+
     <Button
-        android:onClick="VerificationMessage"
-        android:translationZ="1dp"
-        android:textColor="#ffffff"
-        android:text="点击注册"
-        android:background="@drawable/shape_enrich"
-        android:layout_margin="10dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_enrich"
+        android:onClick="ConfirmPassword"
+        android:text="点击注册"
+        android:textColor="#ffffff"
+        android:translationZ="1dp" />
 </LinearLayout>

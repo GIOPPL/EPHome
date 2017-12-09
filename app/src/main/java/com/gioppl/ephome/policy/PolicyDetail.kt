@@ -16,7 +16,7 @@ class PolicyDetail: AppCompatActivity() {
     var tv_title:TextView?=null
     var tv_msg:TextView?=null
     var tv_content:TextView?=null
-    var eventBus: PolicyModel?=null//上一个界面传过来的数据
+    var eventBus: PolicyEntity?=null//上一个界面传过来的数据
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.policy_detail)
@@ -26,13 +26,12 @@ class PolicyDetail: AppCompatActivity() {
     }
 
     private fun initData() {
-        tv_title!!.text=eventBus!!.title
-        tv_msg!!.text=eventBus!!.msg
-        tv_content!!.text=eventBus!!.content
+        tv_title!!.text=eventBus!!.ztitle
+        tv_content!!.text=eventBus!!.zcontent
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    fun helloEventBus(eventBus: PolicyModel) {
+    fun helloEventBus(eventBus: PolicyEntity) {
         this.eventBus=eventBus
     }
 

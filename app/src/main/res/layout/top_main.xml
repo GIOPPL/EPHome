@@ -12,14 +12,14 @@
         android:layout_centerVertical="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="环保之家"
+        android:text="循环农业"
         android:textColor="#fefefe"
         android:gravity="center"
         android:textSize="20sp" />
 
     <ImageView
-        android:clickable="true"
         android:visibility="gone"
+        android:clickable="true"
         android:id="@+id/im_top_add"
         android:layout_marginRight="10dp"
         android:layout_centerVertical="true"
@@ -27,6 +27,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_top_add_forum"/>
+    <ImageView
+        android:visibility="gone"
+        android:clickable="true"
+        android:id="@+id/im_top_search"
+        android:layout_marginRight="50dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:onClick="Search"
+        android:background="@mipmap/search"/>
     <ImageView
         android:visibility="gone"
         android:clickable="true"

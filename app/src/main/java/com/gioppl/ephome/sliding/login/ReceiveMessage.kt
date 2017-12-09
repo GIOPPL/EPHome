@@ -1,4 +1,4 @@
-package com.gioppl.ephome.login
+package com.gioppl.ephome.sliding.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,9 +13,6 @@ import cn.smssdk.EventHandler
 import cn.smssdk.SMSSDK
 import com.gioppl.ephome.FinalValue
 import com.gioppl.ephome.R
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
 
 /**
  * Created by GIOPPL on 2017/11/23.
@@ -26,7 +23,7 @@ class ReceiveMessage:AppCompatActivity (){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.receive_msg)
-        EventBus.getDefault().register(this)
+//        EventBus.getDefault().register(this)
         initView()
         initSDK()
     }
@@ -36,12 +33,13 @@ class ReceiveMessage:AppCompatActivity (){
     }
 
     public fun VerificationMessage(view: View){
+        phoneNumber=Login.PHONE_NUMBER
         SMSSDK.submitVerificationCode("86", phoneNumber, ed_phoneNumber!!.text.toString())
     }
-    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    fun helloEventBus(eventBus: String) {
-        phoneNumber=eventBus
-    }
+//    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+//    fun helloEventBus(eventBus: String) {
+//        phoneNumber=eventBus
+//    }
     private fun initSDK() {
         val eh = object : EventHandler() {
 
@@ -70,7 +68,8 @@ class ReceiveMessage:AppCompatActivity (){
                 if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {//提交验证码成功
                     FinalValue.successMessage("提交验证码成功")
                     if (result == SMSSDK.RESULT_COMPLETE) {
-                        FinalValue.successMessage("依然走短信验证")
+                        FinalValue.successMessage("成功")
+                        Login.PHONE_NUMBER=ed_phoneNumber!!.text.toString()
                         startActivity(Intent(this@ReceiveMessage, ConfirmCode::class.java))
                     }
 

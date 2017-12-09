@@ -24,16 +24,9 @@
             android:textSize="20sp" />
     </LinearLayout>
 
-    <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/rv_forum"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
-        <!---->
-    <!--</android.support.v7.widget.RecyclerView>-->
     <com.xlibs.xrv.view.XRecyclerView
         android:id="@+id/rv_forum"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:overScrollMode="never"
-        />
+        android:overScrollMode="never"/>
 </RelativeLayout>

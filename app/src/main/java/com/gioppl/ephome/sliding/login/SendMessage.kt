@@ -1,4 +1,4 @@
-package com.gioppl.ephome.login
+package com.gioppl.ephome.sliding.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,20 +15,19 @@ import cn.smssdk.SMSSDK
 import com.gioppl.ephome.FinalValue
 import com.gioppl.ephome.R
 import com.mob.MobSDK
-import org.greenrobot.eventbus.EventBus
 
 /**
  * Created by GIOPPL on 2017/11/23.
  */
-class Register :AppCompatActivity() {
+class SendMessage :AppCompatActivity() {
 
     var im_phone:ImageView?=null
     var ed_phone:EditText?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.register)
-        MobSDK.init(this@Register, "1723697e0be06", "6574cd70260e9ad5d72e9b35e29210b6")
+        setContentView(R.layout.send_message)
+        MobSDK.init(this@SendMessage, "1723697e0be06", "6574cd70260e9ad5d72e9b35e29210b6")
         initSDK()
         initView()
 
@@ -46,8 +45,9 @@ class Register :AppCompatActivity() {
                 try {//
                     SMSSDK.getVerificationCode("86", ed_phone!!.text.toString())
                     FinalValue.successMessage("短信发送成功")
-                    EventBus.getDefault().postSticky(ed_phone!!.text.toString());
-                    startActivity(Intent(this@Register, ReceiveMessage::class.java))
+//                    EventBus.getDefault().postSticky(ed_phone!!.text.toString());
+                    Login.PHONE_NUMBER=ed_phone!!.text.toString()
+                    startActivity(Intent(this@SendMessage, ReceiveMessage::class.java))
                     finish()
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -60,7 +60,6 @@ class Register :AppCompatActivity() {
 
     private fun initSDK() {
         val eh = object : EventHandler() {
-
             override fun afterEvent(event: Int, result: Int, data: Any?) {
 
                 val msg = Message()

@@ -16,7 +16,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:text="环保之家"
+            android:text="循环农业"
             android:textColor="#fefefe"
             android:textSize="20sp" />
 

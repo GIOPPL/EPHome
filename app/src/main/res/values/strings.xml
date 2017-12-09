@@ -1,4 +1,8 @@
 <resources>
+    <!--<string name="app_name">RippleButton</string>-->
+    <string name="btn_ripple_text">按住我</string>
+    <string name="desc">按住按钮，开始波纹动画。\n放开按钮，停止波纹动画。</string>
+
     <string name="app_name">EPHome</string>
     <string name="ad_1_content">现有大量鲜猪肉出售!量大可批发!!现有大量鲜猪肉出售!量大可批发!!现有大量鲜猪肉出售!量大可批发!!现有大量鲜猪肉出售!量大可批发!!</string>
     <string name="ad_1_title">[存]现有大量鲜猪肉出售!量大可批发!!现有大量鲜猪肉出售!量大可批发!!</string>

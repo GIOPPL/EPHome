@@ -16,6 +16,9 @@
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.SEND_SMS"/>
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -36,12 +39,35 @@
         <activity android:name="com.zzti.fengyongge.imagepicker.PhotoPreviewActivity"></activity>
         <activity android:name=".policy.PolicyDetail"/>
         <activity android:name=".HomePager.HomePointFather"/>
-        <activity android:name=".login.Login"/>
+        <activity android:name="com.gioppl.ephome.sliding.login.Login"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".forum.ForumDetails"/>
-        <activity android:name=".login.Register"/>
-        <activity android:name=".login.ReceiveMessage"/>
-        <activity android:name=".login.ConfirmCode"/>
+        <activity android:name="com.gioppl.ephome.sliding.login.SendMessage"/>
+        <activity android:name="com.gioppl.ephome.sliding.login.ReceiveMessage"/>
+        <activity android:name="com.gioppl.ephome.sliding.login.ConfirmCode"/>
+        <activity android:name="com.gioppl.ephome.sliding.login.Register"/>
+        <activity android:name=".voice.VoiceActivity"/>
+        <activity android:name=".HomePager.Pollution"/>
+        <activity android:name=".policy.PollutionDetail"/>
+        <activity android:name=".sliding.userInfor.UpdateUser"/>
+        <activity android:name=".sliding.userInfor.UpdatePassword"/>
+        <activity android:name=".sliding.AboutMe"/>
+        <activity android:name=".HomePager.Biology"/>
+        <activity android:name=".HomePager.Circle"/>
+        <activity android:name=".voice.SearchResult"/>
+        <service
+            android:name="com.baidu.speech.VoiceRecognitionService"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.baidu.speech.APP_ID"
+            android:value="9788136" />
+        <meta-data
+            android:name="com.baidu.speech.API_KEY"
+            android:value="0GjQNO5H4pGPf9HyA3AmZEbz" />
+        <meta-data
+            android:name="com.baidu.speech.SECRET_KEY"
+            android:value="db981ef3ec647ba8a09b599ad7447a24" />
         <!--<activity-->
             <!--android:name="com.mob.tools.MobUIShell"-->
             <!--android:theme="@android:style/Theme.Translucent.NoTitleBar"-->

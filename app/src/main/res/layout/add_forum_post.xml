@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:background="#ECECEC"
     android:orientation="vertical">
 
@@ -31,12 +31,12 @@
             android:layout_weight="1" />
 
         <TextView
-            android:onClick="confirmAdd"
             android:id="@+id/tv_addForum_OK"
             android:layout_width="60dp"
             android:layout_height="40dp"
             android:layout_gravity="center_vertical"
             android:gravity="center"
+            android:onClick="confirmAdd"
             android:paddingRight="10dp"
             android:text="添加"
             android:textColor="#ffffff" />
@@ -82,14 +82,13 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:background="#afffffff"
         android:orientation="vertical">
 
         <EditText
-            android:paddingTop="5dp"
             android:id="@+id/ed_addForum_content"
             android:layout_width="match_parent"
             android:layout_height="200dp"
@@ -97,8 +96,27 @@
             android:gravity="top"
             android:hint="请描述您的产品……"
             android:paddingBottom="30dp"
+            android:paddingTop="5dp"
             android:textColor="#aa000000"
             android:textColorHint="#AAAAAA"
             android:textSize="16sp" />
-    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical">
+
+            <ch.ielse.view.SwitchView
+                android:id="@+id/switchView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_addForum_isHide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手机号可见"/>
+        </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>
