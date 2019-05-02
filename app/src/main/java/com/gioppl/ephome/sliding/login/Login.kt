@@ -5,10 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.EditText
-import com.gioppl.ephome.EventBusMain
-import com.gioppl.ephome.FinalValue
-import com.gioppl.ephome.PostRequest
-import com.gioppl.ephome.R
+import com.gioppl.ephome.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import org.greenrobot.eventbus.EventBus
@@ -19,6 +16,8 @@ import java.util.*
  * Created by GIOPPL on 2017/10/23.
  */
 class Login : AppCompatActivity() {
+    var password="";
+    var userId=""
     var ed_user: EditText? = null
     var ed_psw: EditText? = null
     var username: String? = null
@@ -26,12 +25,16 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
+        password=SharedPreferencesUtils.getParam(this,"password","") as String
+        userId=SharedPreferencesUtils.getParam(this,"userId","") as String
         initView()
     }
 
     private fun initView() {
         ed_psw = findViewById(R.id.ed_login_psw) as EditText?
         ed_user = findViewById(R.id.ed_login_user) as EditText?
+        ed_psw!!.setText(password)
+        ed_user!!.setText(userId)
     }
     companion object {
         internal var PASSWORD=""
@@ -49,7 +52,7 @@ class Login : AppCompatActivity() {
             map.put("iphone",ed_user!!.text.toString())
             map.put("upwd",ed_psw!!.text.toString())
 
-            PostRequest(map, "http://116.196.91.8:8080/webtest/UserLogin", PostRequest.POST, object : PostRequest.RequestCallback {
+            PostRequest(map, "${FinalValue.BASE_URL}/UserLogin", PostRequest.POST, object : PostRequest.RequestCallback {
                 override fun success(back: String) {
                     val bean=formatBeanList(back)
                     if (bean.isState){
@@ -61,6 +64,8 @@ class Login : AppCompatActivity() {
                         FinalValue.MAIL=bean.email
                         FinalValue.LOAD_STA=true
                         FinalValue.USER_PASSWORD=ed_psw!!.text.toString()
+                        SharedPreferencesUtils.setParam(this@Login,"userId",ed_user!!.text.toString())
+                        SharedPreferencesUtils.setParam(this@Login,"password",ed_psw!!.text.toString())
                         EventBus.getDefault().postSticky(EventBusMain(true,true));
                         this@Login.startActivity(Intent(this@Login,com.gioppl.ephome.MainActivity::class.java))
                         finish()

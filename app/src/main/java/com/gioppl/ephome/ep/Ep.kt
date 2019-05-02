@@ -23,6 +23,7 @@ import com.gioppl.ephome.FinalValue
 import com.gioppl.ephome.HomePager.adapt.EpAdapt
 import com.gioppl.ephome.PostRequest
 import com.gioppl.ephome.R
+import com.gioppl.ephome.SharedPreferencesUtils
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.IOException
@@ -59,7 +60,8 @@ class Ep : Fragment() {
     private fun initData() {
 
         val map = HashMap<String, Any>()
-        PostRequest(map, "http://116.196.91.8:8080/webtest/ServletChange", PostRequest.POST, object : PostRequest.RequestCallback {
+        var base_url= SharedPreferencesUtils.getParam(activity,"base_url","错误url")as String
+        PostRequest(map, base_url+FinalValue.INTERFACE_EP, PostRequest.POST, object : PostRequest.RequestCallback {
             override fun success(back: String) {
                 mList.clear()
                 val list=formatJsonToEntity(back)

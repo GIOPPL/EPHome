@@ -17,9 +17,22 @@ class FinalValue {
         internal var goodsPriseList=ArrayList<GoodsPriceEntity>()
 
 
-        //所有接口
-        internal var INTERFACE_REGISTER="http://116.196.91.8:8080/webtest/Register"
-        internal var INTERFACE_POLICY="http://116.196.91.8:8080/webtest/ServletZhengceLimit"
+        //所有接口 "http://116.196.91.8:8080/webtest/ServletPPLinsert"
+         var BASE_URL="http://192.168.42.234:8080";
+         var INTERFACE_REGISTER="/Register"
+         var INTERFACE_POLICY="/ServletZhengceLimit"
+         var INTERFACE_ADDFORUM="/ServletPPLinsert"
+         var INTERFACE_GOODS_PRICE="/ServletCountGet"
+         var INTERFACE_EP="/ServletChange";
+         var INTERFACE_FORUM="/ServletDxlFindAll";
+         var INTERFACE_FORUM_LOAD_MORE="/ServletPPLLimit";
+         var INTERFACE_UPDATE_PASSWORD="/ServletPPLuserupdate";
+         var INTERFACE_SEARCH_FORUM="/ServletPPLvague";
+         var INTERFACE_USER_UPDATE="/ServletPPLuserupdate";
+         var INTERFACE_POLLUTION="/ServletEnvGetall";
+         var INTERFACE_ServletNongyeHuanbao="/ServletNongyeHuanbao";
+         var INTERFACE_ServletResourceLimitTo="/ServletResourceLimitTo";
+         var INTERFACE_ServletNewLimitTo="/ServletNewLimitTo";
 
         //数据第一次加载
         internal var FORUM_IS_FIRST_LOAD=true//论坛是不是第一次加载

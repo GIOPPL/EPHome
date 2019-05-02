@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 
+import com.gioppl.ephome.FinalJAVA;
 import com.gioppl.ephome.FinalValue;
 
 import java.io.BufferedReader;
@@ -45,7 +46,7 @@ public class RegisterPost {
      */
     public  void loginByPost(String uname,String upwd,String iphone,String email,String address){
         Message msg;
-        String path = "http://116.196.91.8:8080/webtest/Register";
+        String path = FinalJAVA.BaseUrl+ "/Register";
         try {
             URL url = new URL(path);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();

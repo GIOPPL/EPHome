@@ -8,6 +8,7 @@ import android.widget.EditText
 import com.gioppl.ephome.FinalValue
 import com.gioppl.ephome.PostRequest
 import com.gioppl.ephome.R
+import com.gioppl.ephome.SharedPreferencesUtils
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.util.*
@@ -47,7 +48,8 @@ class UpdatePassword : AppCompatActivity() {
         map.put("upwd", ed_new!!.text.toString())
         map.put("uid", FinalValue.ID)
         map.put("uimage", FinalValue.HEAD_PHOTO_URL)
-        PostRequest(map, "http://116.196.91.8:8080/webtest/ServletPPLuserupdate", PostRequest.POST, object : PostRequest.RequestCallback {
+        var base_url= SharedPreferencesUtils.getParam(this@UpdatePassword,"base_url","错误url")as String
+        PostRequest(map, base_url+FinalValue.INTERFACE_UPDATE_PASSWORD, PostRequest.POST, object : PostRequest.RequestCallback {
             override fun success(back: String) {
                 val bean=formatBeanList(back)
                 if (bean.isState){

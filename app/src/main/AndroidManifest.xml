@@ -2,21 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gioppl.ephome">
     <!-- 允许联网 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 获取GSM（2g）、WCDMA（联通3g）等网络状态的信息 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- 获取wifi网络状态的信息 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!-- 保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <!-- 获取sd卡写的权限，用于文件上传和下载 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- 允许读取手机状态 用于创建BmobInstallation -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 获取GSM（2g）、WCDMA（联通3g）等网络状态的信息 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 获取wifi网络状态的信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 获取sd卡写的权限，用于文件上传和下载 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许读取手机状态 用于创建BmobInstallation -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-
+    <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
@@ -27,6 +21,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".sliding.InternetActivity"></activity>
         <activity android:name=".AppStart">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,27 +29,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".forum.AddForumPost"/>
-        <activity android:name="com.zzti.fengyongge.imagepicker.PhotoSelectorActivity"></activity>
-        <activity android:name="com.zzti.fengyongge.imagepicker.PhotoPreviewActivity"></activity>
-        <activity android:name=".policy.PolicyDetail"/>
-        <activity android:name=".HomePager.HomePointFather"/>
-        <activity android:name="com.gioppl.ephome.sliding.login.Login"/>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".forum.ForumDetails"/>
-        <activity android:name="com.gioppl.ephome.sliding.login.SendMessage"/>
-        <activity android:name="com.gioppl.ephome.sliding.login.ReceiveMessage"/>
-        <activity android:name="com.gioppl.ephome.sliding.login.ConfirmCode"/>
-        <activity android:name="com.gioppl.ephome.sliding.login.Register"/>
-        <activity android:name=".voice.VoiceActivity"/>
-        <activity android:name=".HomePager.Pollution"/>
-        <activity android:name=".policy.PollutionDetail"/>
-        <activity android:name=".sliding.userInfor.UpdateUser"/>
-        <activity android:name=".sliding.userInfor.UpdatePassword"/>
-        <activity android:name=".sliding.AboutMe"/>
-        <activity android:name=".HomePager.Biology"/>
-        <activity android:name=".HomePager.Circle"/>
-        <activity android:name=".voice.SearchResult"/>
+        <activity android:name=".forum.AddForumPost" />
+        <activity android:name="com.zzti.fengyongge.imagepicker.PhotoSelectorActivity" />
+        <activity android:name="com.zzti.fengyongge.imagepicker.PhotoPreviewActivity" />
+        <activity android:name=".policy.PolicyDetail" />
+        <activity android:name=".HomePager.HomePointFather" />
+        <activity android:name=".sliding.login.Login" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".forum.ForumDetails" />
+        <activity android:name=".sliding.login.SendMessage" />
+        <activity android:name=".sliding.login.ReceiveMessage" />
+        <activity android:name=".sliding.login.ConfirmCode" />
+        <activity android:name=".sliding.login.Register" />
+        <activity android:name=".voice.VoiceActivity" />
+        <activity android:name=".HomePager.Pollution" />
+        <activity android:name=".policy.PollutionDetail" />
+        <activity android:name=".sliding.userInfor.UpdateUser" />
+        <activity android:name=".sliding.userInfor.UpdatePassword" />
+        <activity android:name=".sliding.AboutMe" />
+        <activity android:name=".HomePager.Biology" />
+        <activity android:name=".HomePager.Circle" />
+        <activity android:name=".voice.SearchResult" />
+
         <service
             android:name="com.baidu.speech.VoiceRecognitionService"
             android:exported="false" />
@@ -68,14 +64,6 @@
         <meta-data
             android:name="com.baidu.speech.SECRET_KEY"
             android:value="db981ef3ec647ba8a09b599ad7447a24" />
-        <!--<activity-->
-            <!--android:name="com.mob.tools.MobUIShell"-->
-            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar"-->
-            <!--android:configChanges="keyboardHidden|orientation|screenSize"-->
-            <!--android:windowSoftInputMode="stateHidden|adjustResize"/>-->
-        <!--&lt;!&ndash;&lt;!&ndash; 通过AndroidManifest配置AppKey和AppSecret，如果你选择通过代码配置，则不需要配置以下meta-data &ndash;&gt;&ndash;&gt;-->
-        <!--<meta-data android:name="Mob-AppKey" android:value="1723697e0be06"/>-->
-        <!--<meta-data android:name="Mob-AppSecret" android:value="6574cd70260e9ad5d72e9b35e29210b6"/>-->
     </application>
 
 </manifest>

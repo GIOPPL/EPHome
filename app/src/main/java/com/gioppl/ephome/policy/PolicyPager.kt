@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.gioppl.ephome.FinalValue
 import com.gioppl.ephome.PostRequest
 import com.gioppl.ephome.R
+import com.gioppl.ephome.SharedPreferencesUtils
 import com.gioppl.ephome.forum.PolicyAdapt
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -52,8 +54,10 @@ class PolicyPager : Fragment() {
         val map = HashMap<String, Any>()
         map.put("from", from)
         map.put("to", to)
-        PostRequest(map, FinalValue.INTERFACE_POLICY, PostRequest.POST, object : PostRequest.RequestCallback {
+        var base_url=SharedPreferencesUtils.getParam(activity,"base_url","错误url")as String
+        PostRequest(map, base_url+FinalValue.INTERFACE_POLICY, PostRequest.POST, object : PostRequest.RequestCallback {
             override fun success(back: String) {
+                Log.i("AAAAA",back)
                 for (i in formatBeanList(back.substring(20, back.length - 1)))
                     policyList.add(i)
                 mAdapt!!.notifyDataSetChanged()
@@ -63,6 +67,7 @@ class PolicyPager : Fragment() {
                     mXRecyclerView!!.scrollToPosition(2)
                     firstLoad=false
                 }
+                FinalValue.toast(activity, "刷新完成")
 //                else
 //                    mXRecyclerView!!.scrollToPosition(policyList.size - 1)
             }

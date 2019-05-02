@@ -11,10 +11,7 @@ import com.avos.avoscloud.AVException
 import com.avos.avoscloud.AVFile
 import com.avos.avoscloud.SaveCallback
 import com.facebook.drawee.view.SimpleDraweeView
-import com.gioppl.ephome.FatherActivity
-import com.gioppl.ephome.FinalValue
-import com.gioppl.ephome.PostRequest
-import com.gioppl.ephome.R
+import com.gioppl.ephome.*
 import com.zzti.fengyongge.imagepicker.PhotoSelectorActivity
 import java.util.*
 
@@ -100,8 +97,8 @@ class AddForumPost : FatherActivity() {
                     map.put("uimage",FinalValue.HEAD_PHOTO_URL)
                     map.put("hide",hide)
                     map.put("uid",FinalValue.ID)
-
-                    PostRequest(map, "http://116.196.91.8:8080/webtest/ServletPPLinsert", PostRequest.POST, object : PostRequest.RequestCallback {
+                    var base_url= SharedPreferencesUtils.getParam(this@AddForumPost,"base_url","错误url")as String
+                    PostRequest(map, base_url+FinalValue.INTERFACE_ADDFORUM, PostRequest.POST, object : PostRequest.RequestCallback {
                         override fun success(back: String) {
                             Log.i("成功", back)
                         }

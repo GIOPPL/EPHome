@@ -13,9 +13,11 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.gioppl.ephome.FinalValue
 import com.gioppl.ephome.HomePager.entity.PollutionEntity
 import com.gioppl.ephome.PostRequest
 import com.gioppl.ephome.R
+import com.gioppl.ephome.SharedPreferencesUtils
 import com.gioppl.ephome.policy.PollutionDetail
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -43,15 +45,22 @@ class HomePager : Fragment(), View.OnClickListener {
     private var tv_new2_date: TextView? = null
     private var mList = ArrayList<NewEntity>()
 
+
+    private var picture1=""//https://s2.mogucdn.com/mlcdn/c45406/170422_678did070ec6le09de3g15c1l7l36_750x500.jpg";
+    private var picture2=""//https://s2.mogucdn.com/mlcdn/c45406/170420_1hcbb7h5b58ihilkdec43bd6c2ll6_750x500.jpg"
+    private var picture3=""//http://s18.mogucdn.com/p2/170122/upload_66g1g3h491bj9kfb6ggd3i1j4c7be_750x500.jpg";
+    private var picture4=""//http://s18.mogucdn.com/p2/170204/upload_657jk682b5071bi611d9ka6c3j232_750x500.jpg"
+
+
     //轮播图
     var banner: BannerView<Any>? = null
-    var titles = arrayOf("光伏电网最新公告1", "光伏电网最新公告2", "光伏电网最新公告3", "光伏电网最新公告4", "光伏电网最新公告5", "光伏电网最新公告6")
+    var titles = arrayOf("公告1", "公告2", "公告3", "公告4", "公告5", "公告6")
     val list = ArrayList<BannerItem>()
-    val urls = arrayOf(//750x500//
-            "http://ac-rxsnxjjw.clouddn.com/72ce8d49ddfcadc1ca2e.jpg",
-            "http://ac-qzlvbisn.clouddn.com/0eaa95f4de78c97d7a7b.png",
-            "http://ac-rxsnxjjw.clouddn.com/e143277c636b5deba3e3.jpg",
-            "http://ac-rxsnxjjw.clouddn.com/55b7191157d9367db99b.jpg"
+    var urls= arrayOf(//750x500//
+            picture1,
+            picture2,
+            picture3,
+            picture4
     )
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?)
@@ -59,6 +68,23 @@ class HomePager : Fragment(), View.OnClickListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        picture1=SharedPreferencesUtils.getParam(activity,"picture1","") as String
+        picture2=SharedPreferencesUtils.getParam(activity,"picture2","") as String
+        picture3=SharedPreferencesUtils.getParam(activity,"picture3","") as String
+        picture4=SharedPreferencesUtils.getParam(activity,"picture4","") as String
+        urls= arrayOf(//750x500//
+                picture1,
+                picture2,
+                picture3,
+                picture4
+        )
+        for (i in urls.indices) {
+            val item = BannerItem()
+            item.image = urls[i]
+            item.title = titles[i]
+
+            list.add(item)
+        }
         initView()
         initRollImage()
         newData()
@@ -116,15 +142,15 @@ class HomePager : Fragment(), View.OnClickListener {
         }
     }
 
-    init {
-        for (i in urls.indices) {
-            val item = BannerItem()
-            item.image = urls[i]
-            item.title = titles[i]
-
-            list.add(item)
-        }
-    }
+//    init {
+//        for (i in urls.indices) {
+//            val item = BannerItem()
+//            item.image = urls[i]
+//            item.title = titles[i]
+//
+//            list.add(item)
+//        }
+//    }
 
     class BannerItem {
         var image: String? = null
@@ -169,7 +195,8 @@ class HomePager : Fragment(), View.OnClickListener {
         val map = HashMap<String, Any>()
         map.put("from", "1")
         map.put("to", "2");
-        PostRequest(map, "http://116.196.91.8:8080/webtest/ServletNewLimitTo", PostRequest.POST, object : PostRequest.RequestCallback {
+        var base_url= SharedPreferencesUtils.getParam(activity,"base_url","错误url")as String
+        PostRequest(map, base_url+FinalValue.INTERFACE_ServletNewLimitTo, PostRequest.POST, object : PostRequest.RequestCallback {
             override fun success(back: String) {
                 Log.i("获取首页两条成功", back)
 

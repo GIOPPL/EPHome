@@ -1,15 +1,12 @@
 package com.gioppl.ephome.HomePager
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.OrientationHelper
 import android.support.v7.widget.RecyclerView
 import android.util.Log
-import com.gioppl.ephome.FatherActivity
+import com.gioppl.ephome.*
 import com.gioppl.ephome.HomePager.adapt.BiologyAdapt
-import com.gioppl.ephome.PostRequest
-import com.gioppl.ephome.R
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.util.*
@@ -32,7 +29,8 @@ class Circle :FatherActivity(){
         val map = HashMap<String, Any>()
         map.put("from","1")
         map.put("to","20");
-        PostRequest(map, "http://116.196.91.8:8080/webtest/ServletNongyeHuanbao", PostRequest.POST, object : PostRequest.RequestCallback {
+        var base_url= SharedPreferencesUtils.getParam(this@Circle,"base_url","错误url")as String
+        PostRequest(map, base_url+FinalValue.INTERFACE_ServletNongyeHuanbao, PostRequest.POST, object : PostRequest.RequestCallback {
             override fun success(back: String) {
                 val list=formatJsonToEntity(back)
                 for (i in list)

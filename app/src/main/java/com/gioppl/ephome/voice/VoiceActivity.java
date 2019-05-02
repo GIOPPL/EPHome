@@ -18,6 +18,8 @@ import com.baidu.speech.EventManager;
 import com.baidu.speech.EventManagerFactory;
 import com.baidu.speech.asr.SpeechConstant;
 import com.gioppl.ephome.FatherActivity;
+import com.gioppl.ephome.FinalJAVA;
+import com.gioppl.ephome.FinalValue;
 import com.gioppl.ephome.PostRequest;
 import com.gioppl.ephome.R;
 import com.gioppl.ephome.forum.ForumBean;
@@ -116,7 +118,7 @@ public class VoiceActivity extends FatherActivity{
 //                Toast.makeText(VoiceActivity.this, searchTerm + " Searched", Toast.LENGTH_LONG).show();
                 HashMap map = new HashMap<String, Object>();
                 map.put("title",searchTerm);
-                new PostRequest(map, "http://116.196.91.8:8080/webtest/ServletPPLvague", PostRequest.POST, new PostRequest.RequestCallback() {
+                new PostRequest(map, FinalJAVA.BaseUrl+"/ServletPPLvague", PostRequest.POST, new PostRequest.RequestCallback() {
                     @Override
                     public void success(String back) {
                         Log.i("搜索帖子成功", back);
@@ -242,7 +244,7 @@ public class VoiceActivity extends FatherActivity{
                 searchString=msg.obj.toString();
                 HashMap map = new HashMap<String, Object>();
                 map.put("title",searchString);
-                new PostRequest(map, "http://116.196.91.8:8080/webtest/ServletPPLvague", PostRequest.POST, new PostRequest.RequestCallback() {
+                new PostRequest(map,FinalJAVA.BaseUrl+"/ServletPPLvague", PostRequest.POST, new PostRequest.RequestCallback() {
                     @Override
                     public void success(String back) {
                         Log.i("搜索帖子成功", back);

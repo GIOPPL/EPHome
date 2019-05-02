@@ -15,6 +15,7 @@ import android.widget.LinearLayout
 import com.gioppl.ephome.FinalValue
 import com.gioppl.ephome.PostRequest
 import com.gioppl.ephome.R
+import com.gioppl.ephome.SharedPreferencesUtils
 import com.gioppl.ephome.sliding.login.Login
 import com.gioppl.ephome.voice.VoiceActivity
 import com.google.gson.Gson
@@ -77,7 +78,8 @@ class Forum : Fragment() {
         val map = HashMap<String, Any>()
         map.put("from", 0)
         map.put("to", 10);
-        PostRequest(map, "http://116.196.91.8:8080/webtest/ServletDxlFindAll", PostRequest.POST, object : PostRequest.RequestCallback {
+        var base_url= SharedPreferencesUtils.getParam(activity,"base_url","错误url")as String
+        PostRequest(map, base_url+FinalValue.INTERFACE_FORUM, PostRequest.POST, object : PostRequest.RequestCallback {
             override fun success(back: String) {
                 val list = formatForumBean(back)
                 mList.clear()
@@ -108,7 +110,8 @@ class Forum : Fragment() {
         val map = HashMap<String, Any>()
         map.put("from", from)
         map.put("to", to)
-        PostRequest(map, "http://116.196.91.8:8080/webtest/ServletPPLLimit", PostRequest.POST, object : PostRequest.RequestCallback {
+        var base_url=SharedPreferencesUtils.getParam(activity,"base_url","错误url")as String
+        PostRequest(map, base_url+FinalValue.INTERFACE_FORUM_LOAD_MORE, PostRequest.POST, object : PostRequest.RequestCallback {
             override fun success(back: String) {
                 val list = formatForumBean(back)
                 for (i in list) {

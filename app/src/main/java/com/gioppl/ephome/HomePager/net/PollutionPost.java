@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 
+import com.gioppl.ephome.FinalJAVA;
 import com.gioppl.ephome.FinalValue;
 import com.gioppl.ephome.HomePager.entity.PollutionEntity;
 import com.google.gson.Gson;
@@ -51,7 +52,7 @@ public class PollutionPost {
      */
     public  void loginByPost(){
         Message msg;
-        String path = "http://116.196.91.8:8080/webtest/ServletEnvGetall";
+        String path = FinalJAVA.BaseUrl+ "/ServletEnvGetall";
         try {
             URL url = new URL(path);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();

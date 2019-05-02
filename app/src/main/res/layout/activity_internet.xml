@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ECECEC"
+    android:orientation="vertical"
+    tools:context=".sliding.InternetActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#41adfa"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_twoAddCircle_back"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:onClick="onBack"
+            android:text="返回"
+            android:textColor="#ffffff" />
+
+
+        <TextView
+            android:id="@+id/tv_addForum_OK"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:paddingRight="10dp"
+            android:text="请输入地址"
+            android:textColor="#ffffff" />
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="1dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="#afffffff"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <EditText
+            android:id="@+id/et_internet_interface"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="192.168.42.234"
+            android:textColor="#aa000000"
+            android:textColorHint="#AAAAAA"
+            android:textSize="16sp" />
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:background="#41adfa"
+            android:onClick="onDetermine"
+            android:text="确定"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="#afffffff"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <EditText
+            android:id="@+id/et_internet_picture1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="https://s2.mogucdn.com/mlcdn/c45406/170422_678did070ec6le09de3g15c1l7l36_750x500.jpg"
+            android:textColor="#aa000000"
+            android:textColorHint="#AAAAAA"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_picture1"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:background="#41adfa"
+            android:text="确定"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="#afffffff"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <EditText
+            android:id="@+id/et_internet_picture2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="https://s2.mogucdn.com/mlcdn/c45406/170420_1hcbb7h5b58ihilkdec43bd6c2ll6_750x500.jpg"
+            android:textColor="#aa000000"
+            android:textColorHint="#AAAAAA"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_picture2"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:background="#41adfa"
+            android:text="确定"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="#afffffff"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <EditText
+            android:id="@+id/et_internet_picture3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="http://s18.mogucdn.com/p2/170122/upload_66g1g3h491bj9kfb6ggd3i1j4c7be_750x500.jpg"
+            android:textColor="#aa000000"
+            android:textColorHint="#AAAAAA"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_picture3"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:background="#41adfa"
+            android:text="确定"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="#afffffff"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <EditText
+            android:id="@+id/et_internet_picture4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="http://s18.mogucdn.com/p2/170204/upload_657jk682b5071bi611d9ka6c3j232_750x500.jpg"
+            android:textColor="#aa000000"
+            android:textColorHint="#AAAAAA"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_picture4"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:background="#41adfa"
+            android:onClick="onDetermine"
+            android:text="确定"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+</LinearLayout>

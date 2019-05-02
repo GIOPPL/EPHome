@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 
+import com.gioppl.ephome.FinalJAVA;
 import com.gioppl.ephome.FinalValue;
 
 import java.io.BufferedReader;
@@ -45,7 +46,7 @@ public class LoginPost {
      */
     public  void loginByPost(String iphone,String upwd){
         Message msg;
-        String path = "http://116.196.91.8:8080/webtest/UserLogin";
+        String path = FinalJAVA.BaseUrl+ "/UserLogin";
         try {
             URL url = new URL(path);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();

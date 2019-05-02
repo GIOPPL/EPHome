@@ -16,5 +16,8 @@ class MyApplication: Application(){
         Fresco.initialize(this);
         AVOSCloud.setDebugLogEnabled(true);
         MultiDex.install(this);
+        var base_url=SharedPreferencesUtils.getParam(this,"base_url","http://192.168.42.234:8080") as String
+        FinalValue.BASE_URL=base_url;
+        FinalJAVA.BaseUrl=base_url;
     }
 }

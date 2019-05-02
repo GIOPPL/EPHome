@@ -8,6 +8,7 @@ import android.widget.EditText
 import com.gioppl.ephome.FinalValue
 import com.gioppl.ephome.PostRequest
 import com.gioppl.ephome.R
+import com.gioppl.ephome.SharedPreferencesUtils
 import java.util.*
 
 /**
@@ -44,7 +45,9 @@ class Register :AppCompatActivity(){
         map.put("iphone", Login.PHONE_NUMBER)
         map.put("email", Login.MAIL)
         map.put("address", Login.ADDRESS)
-        PostRequest(map, FinalValue.INTERFACE_REGISTER, PostRequest.POST, object : PostRequest.RequestCallback {
+
+        var base_url= SharedPreferencesUtils.getParam(this,"base_url","错误url")as String
+        PostRequest(map, base_url+FinalValue.INTERFACE_REGISTER, PostRequest.POST, object : PostRequest.RequestCallback {
 
             override fun success(back: String) {
                 Log.i("注册成功", back)

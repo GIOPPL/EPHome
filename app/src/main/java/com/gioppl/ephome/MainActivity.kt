@@ -24,7 +24,6 @@ import com.google.gson.reflect.TypeToken
 import com.yarolegovich.slidingrootnav.SlideGravity
 import com.yarolegovich.slidingrootnav.SlidingRootNav
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder
-import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.HashMap
@@ -157,7 +156,8 @@ class MainActivity : AppCompatActivity() {
                     map.put("upwd", FinalValue.USER_PASSWORD)
                     map.put("uid", FinalValue.ID)
                     map.put("uimage", file.url)
-                    PostRequest(map, "http://116.196.91.8:8080/webtest/ServletPPLuserupdate", PostRequest.POST, object : PostRequest.RequestCallback {
+                    var base_url=SharedPreferencesUtils.getParam(this@MainActivity,"base_url","错误url")as String
+                    PostRequest(map, base_url+FinalValue.INTERFACE_USER_UPDATE, PostRequest.POST, object : PostRequest.RequestCallback {
                         override fun success(back: String) {
                             val bean=formatBeanList(back)
                             if (bean.isState){

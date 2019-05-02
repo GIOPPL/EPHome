@@ -33,7 +33,8 @@ class AppStart : AppCompatActivity() {
 
     private fun GoodsPrice() {
         val map = HashMap<String, Any>()
-        PostRequest(map,"http://116.196.91.8:8080/webtest/ServletCountGet", PostRequest.POST, object : PostRequest.RequestCallback {
+        var base_url=SharedPreferencesUtils.getParam(this@AppStart,"base_url","错误url")as String
+        PostRequest(map,base_url+FinalValue.INTERFACE_GOODS_PRICE, PostRequest.POST, object : PostRequest.RequestCallback {
             override fun success(back: String) {
                 for (i in formatGoodsList(back))
                     FinalValue.goodsPriseList.add(i)
@@ -85,28 +86,28 @@ class AppStart : AppCompatActivity() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
-    private fun forumCount(){
-        val map = HashMap<String, Any>()
-        map.put("from","0")
-        map.put("to","1")
-        PostRequest(map, "http://116.196.91.8:8080/webtest/ServletDxlFindAll", PostRequest.POST, object : PostRequest.RequestCallback {
-            override fun getBeanList(bean: ArrayList<Any>?) {
-                //
-            }
-
-            override fun success(back: String) {
-                val list=formatForumBean(back)
-                Log.i("成功获取forum的数量",list[list.size-1].count.toString())
-                FinalValue.FORUM_COUNT=list[list.size-1].count
-            }
-
-            override fun error(back: String) {
-                Log.i("失败", back)
-            }
-
-
-        })
-    }
+//    private fun forumCount(){
+//        val map = HashMap<String, Any>()
+//        map.put("from","0")
+//        map.put("to","1")
+//        PostRequest(map, "http://116.196.91.8:8080/webtest/ServletDxlFindAll", PostRequest.POST, object : PostRequest.RequestCallback {
+//            override fun getBeanList(bean: ArrayList<Any>?) {
+//                //
+//            }
+//
+//            override fun success(back: String) {
+//                val list=formatForumBean(back)
+//                Log.i("成功获取forum的数量",list[list.size-1].count.toString())
+//                FinalValue.FORUM_COUNT=list[list.size-1].count
+//            }
+//
+//            override fun error(back: String) {
+//                Log.i("失败", back)
+//            }
+//
+//
+//        })
+//    }
     private fun formatForumBean(json: String): java.util.ArrayList<ForumBean> {
         val list: java.util.ArrayList<ForumBean>
         val listType = object : TypeToken<List<ForumBean>>() {}.type

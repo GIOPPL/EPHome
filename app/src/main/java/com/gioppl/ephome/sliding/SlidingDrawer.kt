@@ -11,6 +11,7 @@ import com.gioppl.ephome.EventBusMain
 import com.gioppl.ephome.FinalValue
 import com.gioppl.ephome.R
 import com.gioppl.ephome.sliding.AboutMe
+import com.gioppl.ephome.sliding.InternetActivity
 import com.gioppl.ephome.sliding.login.Login
 import com.gioppl.ephome.sliding.userInfor.UpdateUser
 import com.zzti.fengyongge.imagepicker.PhotoSelectorActivity
@@ -29,6 +30,7 @@ class SlidingDrawer(private var activity: FragmentActivity) : View.OnClickListen
     var sim_head: SimpleDraweeView? = null
     var lin_update: LinearLayout? = null
     var lin_login: LinearLayout? = null
+    var lin_inter:LinearLayout?=null
     var tv_admin: TextView? = null
 
     init {
@@ -37,11 +39,13 @@ class SlidingDrawer(private var activity: FragmentActivity) : View.OnClickListen
     }
 
     private fun initView() {
-        tv_admin!!.text="未登录"
+
         tv_admin = activity.findViewById(R.id.tv_sliding_admin) as TextView?
         tv_login = activity.findViewById(R.id.tv_sliding_login) as TextView?
         lin_login = activity.findViewById(R.id.lin_sliding_login) as LinearLayout?
+        lin_inter= activity.findViewById(R.id.lin_sliding_interface) as LinearLayout?
         sim_head = activity.findViewById(R.id.sim_sliding_head) as SimpleDraweeView?
+        lin_inter!!.setOnClickListener(this)
         activity.findViewById(R.id.lin_sliding_update).setOnClickListener(this)
         activity.findViewById(R.id.lin_sliding_about).setOnClickListener(this)
         sim_head!!.setImageURI(FinalValue.HEAD_PHOTO_URL)
@@ -52,7 +56,7 @@ class SlidingDrawer(private var activity: FragmentActivity) : View.OnClickListen
             intent.putExtra("limit", 1)//number是选择图片的数量
             activity.startActivityForResult(intent, 0)
         })
-
+        tv_admin!!.text="未登录"
     }
 
 
@@ -70,6 +74,9 @@ class SlidingDrawer(private var activity: FragmentActivity) : View.OnClickListen
             }
             R.id.lin_sliding_about -> {
                 activity.startActivity(Intent(activity, AboutMe::class.java))
+            }
+            R.id.lin_sliding_interface->{
+                activity.startActivity(Intent(activity, InternetActivity::class.java))
             }
         }
     }

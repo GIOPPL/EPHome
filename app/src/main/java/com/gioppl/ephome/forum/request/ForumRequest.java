@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import com.gioppl.ephome.FinalJAVA;
 import com.gioppl.ephome.FinalValue;
 import com.gioppl.ephome.forum.ForumBean;
 import com.google.gson.Gson;
@@ -43,7 +44,7 @@ public class ForumRequest {
         }).start();
     }
     private void forumPost(){
-        String path = "http://116.196.91.8:8080/webtest/ServletPPLLimit";
+        String path = FinalJAVA.BaseUrl+ "/ServletPPLLimit";
         try {
             URL url = new URL(path);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
