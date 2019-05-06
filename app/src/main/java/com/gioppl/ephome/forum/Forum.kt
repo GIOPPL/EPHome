@@ -88,6 +88,7 @@ class Forum : Fragment() {
                 }
                 from++
                 lin_forum!!.visibility = View.GONE
+                mList.removeAt(0)
                 mAdapt!!.notifyDataSetChanged()
 // /                if (mList.size < 5)
 //                    mXRecyclerView!!.scrollToPosition(2)

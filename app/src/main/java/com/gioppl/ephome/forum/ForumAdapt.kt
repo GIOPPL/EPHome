@@ -12,22 +12,18 @@ import com.facebook.drawee.view.SimpleDraweeView
 import com.gioppl.ephome.R
 import org.greenrobot.eventbus.EventBus
 
-/**
- * Created by GIOPPL on 2017/10/6.
- * http://ac-rxsnxjjw.clouddn.com/2e04c777b75c9b016c12.png
- */
 class ForumAdapt(private var mList:ArrayList<ForumBean>?, private var context:Context): RecyclerView.Adapter<ForumAdapt.MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder?, position: Int) {
-        holder!!.sim_image!!.setImageURI(mList!![position].uimage)
-        holder.tv_title!!.text=mList!![position].title
-        holder.tv_content!!.text=mList!![position].content
-        holder.tv_address!!.text=mList!![position].address
+            holder!!.sim_image!!.setImageURI(mList!![position].uimage)
+            holder.tv_title!!.text=mList!![position].title
+            holder.tv_content!!.text=mList!![position].content
+            holder.tv_address!!.text=mList!![position].address
 
-        holder.lin_forum!!.setOnClickListener(View.OnClickListener {
-            EventBus.getDefault().postSticky(mList!![position]);
-            context.startActivity(Intent(context,ForumDetails::class.java))
-        })
+            holder.lin_forum!!.setOnClickListener(View.OnClickListener {
+                EventBus.getDefault().postSticky(mList!![position]);
+                context.startActivity(Intent(context,ForumDetails::class.java))
+            })
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int)

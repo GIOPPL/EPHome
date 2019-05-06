@@ -2,11 +2,13 @@ package com.gioppl.ephome
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.RadioGroup
 import android.widget.RelativeLayout
 import com.avos.avoscloud.AVException
@@ -21,9 +23,7 @@ import com.gioppl.ephome.policy.PolicyPager
 import com.gioppl.ephome.sliding.userInfor.UpdateEntity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.yarolegovich.slidingrootnav.SlideGravity
 import com.yarolegovich.slidingrootnav.SlidingRootNav
-import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.HashMap
@@ -46,31 +46,35 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_slide)
 
         initView()
         initPager()
         initSlidingDrawer()
-        SlidingDrawer(this)
+//        SlidingDrawer(this)
 
     }
 
     private fun initSlidingDrawer() {
-        mSliding= SlidingRootNavBuilder(this)
-                .withMenuLayout(R.layout.sliding_drawer)
-                .withMenuOpened(false) //Initial menu opened/closed state. Default == false
-                .withMenuLocked(false) //If true, a user can't open or close the menu. Default == false.
-                .withGravity(SlideGravity.LEFT) //If LEFT you can swipe a menu from left to right, if RIGHT - the direction is opposite.
-                .inject();
+//        mSliding= SlidingRootNavBuilder(this)
+//                .withMenuLayout(R.layout.sliding_drawer)
+//                .withMenuOpened(false) //Initial menu opened/closed state. Default == false
+//                .withMenuLocked(false) //If true, a user can't open or close the menu. Default == false.
+//                .withGravity(SlideGravity.LEFT) //If LEFT you can swipe a menu from left to right, if RIGHT - the direction is opposite.
+//                .inject();
+        val drawerLayout = findViewById(R.id.drawer_layout)
+        val navigationView = findViewById(R.id.nav_view) as NavigationView
+        val headerView = navigationView.getHeaderView(0)//获取头布局
+        SlidingDrawer(this@MainActivity, headerView)
     }
 
 
     private fun initView() {
         relative= findViewById(R.id.rea_main) as RelativeLayout?
         vp = findViewById(R.id.vp_main) as BanSlidingViewPager?
-        val im_add = findViewById(R.id.im_top_add)
-        val im_calculator = findViewById(R.id.im_top_calculator)
-        val im_search=findViewById(R.id.im_top_search)
+        val im_add = findViewById(R.id.im_top_add) as ImageView
+        val im_calculator = findViewById(R.id.im_top_calculator) as ImageView
+        val im_search=findViewById(R.id.im_top_search) as ImageView
         mRadioGroup = findViewById(R.id.rg_main_bottom) as RadioGroup?
         mRadioGroup!!.check(0)
         mRadioGroup!!.setOnCheckedChangeListener {

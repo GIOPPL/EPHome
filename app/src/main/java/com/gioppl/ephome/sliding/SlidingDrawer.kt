@@ -23,7 +23,7 @@ import org.greenrobot.eventbus.ThreadMode
 /**
  * Created by GIOPPL on 2017/8/18.
  */
-class SlidingDrawer(private var activity: FragmentActivity) : View.OnClickListener {
+class SlidingDrawer(private var activity: FragmentActivity,private var view:View) : View.OnClickListener {
 
 
     var tv_login: TextView? = null
@@ -40,14 +40,14 @@ class SlidingDrawer(private var activity: FragmentActivity) : View.OnClickListen
 
     private fun initView() {
 
-        tv_admin = activity.findViewById(R.id.tv_sliding_admin) as TextView?
-        tv_login = activity.findViewById(R.id.tv_sliding_login) as TextView?
-        lin_login = activity.findViewById(R.id.lin_sliding_login) as LinearLayout?
-        lin_inter= activity.findViewById(R.id.lin_sliding_interface) as LinearLayout?
-        sim_head = activity.findViewById(R.id.sim_sliding_head) as SimpleDraweeView?
+        tv_admin = view.findViewById(R.id.tv_sliding_admin) as TextView?
+        tv_login = view.findViewById(R.id.tv_sliding_login) as TextView?
+        lin_login = view.findViewById(R.id.lin_sliding_login) as LinearLayout?
+        lin_inter= view.findViewById(R.id.lin_sliding_interface) as LinearLayout?
+        sim_head = view.findViewById(R.id.sim_sliding_head) as SimpleDraweeView?
         lin_inter!!.setOnClickListener(this)
-        activity.findViewById(R.id.lin_sliding_update).setOnClickListener(this)
-        activity.findViewById(R.id.lin_sliding_about).setOnClickListener(this)
+        view.findViewById(R.id.lin_sliding_update).setOnClickListener(this)
+        view.findViewById(R.id.lin_sliding_about).setOnClickListener(this)
         sim_head!!.setImageURI(FinalValue.HEAD_PHOTO_URL)
         lin_login!!.setOnClickListener(this)
         sim_head!!.setOnClickListener(View.OnClickListener {
@@ -92,6 +92,6 @@ class SlidingDrawer(private var activity: FragmentActivity) : View.OnClickListen
             tv_login!!.text = "立即登陆"
         }
         sim_head!!.setImageURI(FinalValue.HEAD_PHOTO_URL)
-        (activity.findViewById(R.id.tv_sliding_name) as TextView).text = FinalValue.USER_NAME
+        (view.findViewById(R.id.tv_sliding_name) as TextView).text = FinalValue.USER_NAME
     }
 }

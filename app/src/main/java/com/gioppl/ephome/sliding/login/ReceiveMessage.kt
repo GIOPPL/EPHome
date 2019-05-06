@@ -71,6 +71,7 @@ class ReceiveMessage:AppCompatActivity (){
                         FinalValue.successMessage("成功")
                         Login.PHONE_NUMBER=ed_phoneNumber!!.text.toString()
                         startActivity(Intent(this@ReceiveMessage, ConfirmCode::class.java))
+                        finish()
                     }
 
                 } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {

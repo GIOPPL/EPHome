@@ -1,14 +1,12 @@
 package com.gioppl.ephome.sliding.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.EditText
-import com.gioppl.ephome.FinalValue
-import com.gioppl.ephome.PostRequest
-import com.gioppl.ephome.R
-import com.gioppl.ephome.SharedPreferencesUtils
+import com.gioppl.ephome.*
 import java.util.*
 
 /**
@@ -35,25 +33,25 @@ class Register :AppCompatActivity(){
         val address=ed_address!!.text.toString()
         val mail=ed_mail!!.text.toString()
 
-        Login.USER_NAME=name;
+        Login.USER_NAME=name
         Login.ADDRESS=address
         Login.MAIL=mail
-
+        val shared_phone=SharedPreferencesUtils.getParam(this,FinalJAVA.SharePhone,"");
+        val shared_password=SharedPreferencesUtils.getParam(this,FinalJAVA.SharePassword,"")
         val map = HashMap<String, Any>()
         map.put("uname", Login.USER_NAME)
-        map.put("upwd", Login.PASSWORD)
-        map.put("iphone", Login.PHONE_NUMBER)
+        map.put("upwd", shared_password)
+        map.put("iphone", shared_phone)
         map.put("email", Login.MAIL)
         map.put("address", Login.ADDRESS)
 
         var base_url= SharedPreferencesUtils.getParam(this,"base_url","错误url")as String
         PostRequest(map, base_url+FinalValue.INTERFACE_REGISTER, PostRequest.POST, object : PostRequest.RequestCallback {
-
             override fun success(back: String) {
                 Log.i("注册成功", back)
                 FinalValue.toast(this@Register,"注册成功")
                 FinalValue.LOAD_STA=true
-                finish()
+                startActivity(Intent(this@Register,Login::class.java))
             }
 
             override fun error(back: String) {

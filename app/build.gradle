@@ -79,6 +79,7 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.1'
     implementation 'com.quinny898.library.persistentsearch:library:1.1.0-SNAPSHOT'
     implementation 'ch.ielse:switchbutton:1.0.0'
+    implementation 'com.android.support:design:25.4.0'
 }
 repositories {
     mavenCentral()

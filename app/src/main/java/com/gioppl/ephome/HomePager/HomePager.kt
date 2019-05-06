@@ -46,10 +46,10 @@ class HomePager : Fragment(), View.OnClickListener {
     private var mList = ArrayList<NewEntity>()
 
 
-    private var picture1=""//https://s2.mogucdn.com/mlcdn/c45406/170422_678did070ec6le09de3g15c1l7l36_750x500.jpg";
-    private var picture2=""//https://s2.mogucdn.com/mlcdn/c45406/170420_1hcbb7h5b58ihilkdec43bd6c2ll6_750x500.jpg"
-    private var picture3=""//http://s18.mogucdn.com/p2/170122/upload_66g1g3h491bj9kfb6ggd3i1j4c7be_750x500.jpg";
-    private var picture4=""//http://s18.mogucdn.com/p2/170204/upload_657jk682b5071bi611d9ka6c3j232_750x500.jpg"
+    private var picture1="http://lc-rxsnxjjw.cn-n1.lcfile.com/bd4559f82af6eb83fcd5/a1.png"
+    private var picture2="http://lc-rxsnxjjw.cn-n1.lcfile.com/6727443bf6654d1bbe33/a3.png"
+    private var picture3="http://lc-rxsnxjjw.cn-n1.lcfile.com/eb24b1855eb68ba8c032/a2.png"
+    private var picture4="http://lc-rxsnxjjw.cn-n1.lcfile.com/8db96d94964795c29b2c/a4.png"
 
 
     //轮播图

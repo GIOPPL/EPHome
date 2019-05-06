@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.EditText
+import com.gioppl.ephome.FinalJAVA
 import com.gioppl.ephome.FinalValue
 import com.gioppl.ephome.R
+import com.gioppl.ephome.SharedPreferencesUtils
 
 /**
  * Created by GIOPPL on 2017/11/23.
@@ -28,7 +30,9 @@ class ConfirmCode:AppCompatActivity() {
     public fun ConfirmPassword(view:View){
         if (PwdConsistency()){
             Login.PASSWORD=ed_pwd1!!.text.toString()
+            SharedPreferencesUtils.setParam(this@ConfirmCode,FinalJAVA.SharePassword,ed_pwd1!!.text.toString())
             startActivity(Intent(this@ConfirmCode,Register::class.java))
+            finish()
         }else{
             FinalValue.toast(this@ConfirmCode,"密码不一致")
         }

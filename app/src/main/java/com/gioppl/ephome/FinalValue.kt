@@ -55,6 +55,8 @@ class FinalValue {
         internal var ADMIN=false
         internal var MAIL="1766468447@qq.com"
 
+
+
         //其他
         internal var FORUM_COUNT=0
 

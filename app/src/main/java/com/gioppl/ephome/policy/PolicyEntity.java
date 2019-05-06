@@ -7,6 +7,36 @@ package com.gioppl.ephome.policy;
 public class PolicyEntity {
 
 
+
+
+    private String ztitle;
+    private String zcontent;
+    private int id;
+
+    public String getZtitle() {
+        return ztitle;
+    }
+
+    public void setZtitle(String ztitle) {
+        this.ztitle = ztitle;
+    }
+
+    public String getZcontent() {
+        return zcontent;
+    }
+
+    public void setZcontent(String zcontent) {
+        this.zcontent = zcontent;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     /**
      * ztitle : 国家发展改革委关于全面深化价格机制改革的意见
      * zcontent : 发改价格〔2017〕1941号
@@ -122,32 +152,4 @@ public class PolicyEntity {
      　　2017年11月8日
      * id : 2
      */
-
-    private String ztitle;
-    private String zcontent;
-    private int id;
-
-    public String getZtitle() {
-        return ztitle;
-    }
-
-    public void setZtitle(String ztitle) {
-        this.ztitle = ztitle;
-    }
-
-    public String getZcontent() {
-        return zcontent;
-    }
-
-    public void setZcontent(String zcontent) {
-        this.zcontent = zcontent;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }

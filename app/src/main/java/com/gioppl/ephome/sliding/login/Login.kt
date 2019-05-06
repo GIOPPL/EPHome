@@ -102,6 +102,7 @@ class Login : AppCompatActivity() {
     }
     public fun ToRegister(v: View){
         startActivity(Intent(this@Login, SendMessage::class.java))
+        finish()
     }
 
     private fun formatBeanList(json: String): LoginEntity {

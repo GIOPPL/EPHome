@@ -12,8 +12,10 @@ import android.widget.ImageView
 import android.widget.Toast
 import cn.smssdk.EventHandler
 import cn.smssdk.SMSSDK
+import com.gioppl.ephome.FinalJAVA
 import com.gioppl.ephome.FinalValue
 import com.gioppl.ephome.R
+import com.gioppl.ephome.SharedPreferencesUtils
 import com.mob.MobSDK
 
 /**
@@ -45,8 +47,8 @@ class SendMessage :AppCompatActivity() {
                 try {//
                     SMSSDK.getVerificationCode("86", ed_phone!!.text.toString())
                     FinalValue.successMessage("短信发送成功")
-//                    EventBus.getDefault().postSticky(ed_phone!!.text.toString());
                     Login.PHONE_NUMBER=ed_phone!!.text.toString()
+                    SharedPreferencesUtils.setParam(this@SendMessage,FinalJAVA.SharePhone,ed_phone!!.text.toString())
                     startActivity(Intent(this@SendMessage, ReceiveMessage::class.java))
                     finish()
                 } catch (e: Exception) {

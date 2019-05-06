@@ -12,14 +12,13 @@ import com.gioppl.ephome.FinalValue
 import org.greenrobot.eventbus.EventBus
 import java.io.*
 import java.util.*
-
 /**
  * Created by GIOPPL on 2017/4/30.
  */
 
 class DownHeadPhoto(url: String?) {//
     init {
-        val photoID = decomposeUrl(url)//图片储存的ID
+        val photoID = decomposeUrl(url)//图片储存的ID  kotlin
          getPhoto(url, photoID)
     }
 
