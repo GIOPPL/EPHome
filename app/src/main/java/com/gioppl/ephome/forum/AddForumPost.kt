@@ -80,13 +80,6 @@ class AddForumPost : FatherActivity() {
             val file = AVFile.withAbsoluteLocalPath("GIOPPL.jpg", url)
             file.saveInBackground(object : SaveCallback() {
                 override fun done(e: AVException?) {
-//                    val todoFolder = AVObject("Forum")// 构建对象
-//                    todoFolder.put("title", ed_title!!.text.toString())// 设置名称
-//                    todoFolder.put("content", ed_content!!.text.toString())// 设置内容
-//                    todoFolder.put("person", FinalValue.USER_NAME)// 设置人名
-//                    todoFolder.put("add", FinalValue.ADDRESS)// 设置地址
-//                    todoFolder.put("url", file.url)// 设置照片
-//                    todoFolder.saveInBackground()// 保存到服务端
                     val map = HashMap<String, Any>()
                     map.put("iphone",FinalValue.PHONE)
                     map.put("title",ed_title!!.text.toString())

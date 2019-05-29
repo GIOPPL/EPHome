@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".admin.AdminActivity">
+
+    <include layout="@layout/top_main"/>
+
+
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rect_corner_6dp_blue"
+        android:orientation="vertical">
+        <RadioGroup
+            android:id="@+id/rg_admin_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RadioButton
+            android:id="@+id/rbtn_admin_one"
+            style="@style/adminStyle"
+            android:text="新闻" />
+
+            <RadioButton
+                android:id="@+id/rbtn_admin_two"
+                style="@style/adminStyle"
+                android:text="政策"/>
+
+            <RadioButton
+                android:id="@+id/rbtn_admin_three"
+                style="@style/adminStyle"
+                android:text="污染"/>
+
+            <RadioButton
+                android:id="@+id/rbtn_admin_four"
+                style="@style/adminStyle"
+                android:text="环保"/>
+        </RadioGroup>
+        <EditText
+            android:layout_marginTop="20dp"
+            android:id="@+id/et_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:textColor="@android:color/white"
+            android:textColorHint="#80ffffff"
+            android:hint="请输入标题"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/white"/>
+        <EditText
+            android:layout_marginTop="10dp"
+            android:id="@+id/et_content"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/btn_confirm_normal"
+            android:textColor="@android:color/white"
+            android:textColorHint="#80ffffff"
+            android:gravity="top"
+            android:hint="请输入内容"
+            android:maxLines="10"/>
+        <Button
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/white"
+            android:text="添加"
+            android:background="@drawable/btn_confirm"
+            android:onClick="addToSQL"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</RelativeLayout>

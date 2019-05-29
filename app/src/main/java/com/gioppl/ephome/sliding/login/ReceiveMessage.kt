@@ -1,5 +1,6 @@
 package com.gioppl.ephome.sliding.login
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -55,7 +56,8 @@ class ReceiveMessage:AppCompatActivity (){
         SMSSDK.registerEventHandler(eh)
 
     }
-    private var handler = object : Handler() {
+    private var handler = @SuppressLint("HandlerLeak")
+    object : Handler() {
 
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)

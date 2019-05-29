@@ -13,11 +13,10 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.gioppl.ephome.FinalValue
+import com.gioppl.ephome.*
 import com.gioppl.ephome.HomePager.entity.PollutionEntity
-import com.gioppl.ephome.PostRequest
-import com.gioppl.ephome.R
-import com.gioppl.ephome.SharedPreferencesUtils
+import com.gioppl.ephome.HomePager.entity.WeatherBean
+import com.gioppl.ephome.net.WeatherModel
 import com.gioppl.ephome.policy.PollutionDetail
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -30,7 +29,7 @@ import kotlin.collections.ArrayList
 /**
  * Created by GIOPPL on 2017/9/23.
  */
-class HomePager : Fragment(), View.OnClickListener {
+class  HomePager : Fragment(), View.OnClickListener {
     private var lin_p1: LinearLayout? = null
     private var lin_p2: LinearLayout? = null
     private var lin_p3: LinearLayout? = null
@@ -63,6 +62,16 @@ class HomePager : Fragment(), View.OnClickListener {
             picture4
     )
 
+    //天气预报
+    var tv_air:TextView?=null
+    var im_weather:ImageView?=null
+    var tv_temp:TextView?=null
+    var tv_weather:TextView?=null
+    var tv_windDirection:TextView?=null
+    var tv_humidity:TextView?=null
+    var ll_weather:LinearLayout?=null
+    var weatherBean: WeatherBean?=null
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?)
             = inflater!!.inflate(R.layout.home, container, false)!!
 
@@ -87,10 +96,25 @@ class HomePager : Fragment(), View.OnClickListener {
         }
         initView()
         initRollImage()
+        getWeather()
         newData()
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        list.clear()
     }
 
     private fun initView() {
+        ll_weather= activity.findViewById(R.id.ll_weather) as LinearLayout?
+        im_weather= activity.findViewById(R.id.im_weather) as ImageView?
+        tv_weather= activity.findViewById(R.id.tv_weather) as TextView?
+        tv_temp= activity.findViewById(R.id.tv_temp) as TextView?
+        tv_air= activity.findViewById(R.id.tv_air) as TextView?
+        tv_humidity= activity.findViewById(R.id.tv_humidity) as TextView?
+        tv_windDirection= activity.findViewById(R.id.tv_windDirection) as TextView?
+
         lin_p1 = activity.findViewById(R.id.lin_home_p1) as LinearLayout?
         lin_p2 = activity.findViewById(R.id.lin_home_p2) as LinearLayout?
         lin_p3 = activity.findViewById(R.id.lin_home_p3) as LinearLayout?
@@ -106,22 +130,18 @@ class HomePager : Fragment(), View.OnClickListener {
         lin_p6!!.setOnClickListener(this)
 
         activity.findViewById(R.id.lin_new1).setOnClickListener(View.OnClickListener {
-            if (mList.size == 2) {
                 EventBus.getDefault().postSticky(PollutionEntity(mList[0].title, mList[0].content));
                 context.startActivity(Intent(context, PollutionDetail::class.java))
-            }
         })
         activity.findViewById(R.id.lin_new2).setOnClickListener(View.OnClickListener {
-            if (mList.size == 2) {
                 EventBus.getDefault().postSticky(PollutionEntity(mList[1].title, mList[1].content));
                 context.startActivity(Intent(context, PollutionDetail::class.java))
-            }
         })
         tv_new1_title = activity.findViewById(R.id.tv_new1_title) as TextView?
         tv_new1_date = activity.findViewById(R.id.tv_new1_date) as TextView?
         tv_new2_title = activity.findViewById(R.id.tv_new2_title) as TextView?
         tv_new2_date = activity.findViewById(R.id.tv_new2_date) as TextView?
-
+        ll_weather!!.setOnClickListener(this)
     }
 
     //
@@ -141,16 +161,6 @@ class HomePager : Fragment(), View.OnClickListener {
             return iv
         }
     }
-
-//    init {
-//        for (i in urls.indices) {
-//            val item = BannerItem()
-//            item.image = urls[i]
-//            item.title = titles[i]
-//
-//            list.add(item)
-//        }
-//    }
 
     class BannerItem {
         var image: String? = null
@@ -187,9 +197,14 @@ class HomePager : Fragment(), View.OnClickListener {
                 EventBus.getDefault().postSticky(HomePointModel(R.layout.p6_zoology, R.raw.mk_home_6));
                 activity.startActivity(Intent(context, Circle::class.java))
             }
+            R.id.ll_weather->{
+                EventBus.getDefault().postSticky(weatherBean);
+                activity.startActivity(Intent(activity,FutureWeatherActivity::class.java))
+            }
 
         }
     }
+
 
     private fun newData() {
         val map = HashMap<String, Any>()
@@ -199,7 +214,6 @@ class HomePager : Fragment(), View.OnClickListener {
         PostRequest(map, base_url+FinalValue.INTERFACE_ServletNewLimitTo, PostRequest.POST, object : PostRequest.RequestCallback {
             override fun success(back: String) {
                 Log.i("获取首页两条成功", back)
-
                 val list = formatJsonToEntity(back)
                 val y: Int
                 val m: Int
@@ -209,9 +223,9 @@ class HomePager : Fragment(), View.OnClickListener {
                 m = cal.get(Calendar.MONTH)
                 d = cal.get(Calendar.DATE)
                 val date = "$y-$m-$d"
-                if (list.size == 2) {
-                    tv_new1_title!!.text = list[0].title
-                    tv_new1_date!!.text = date
+                if (list.size >1) {
+                    tv_new2_title!!.text = list[0].title
+                    tv_new2_date!!.text = date
                     tv_new1_title!!.text = list[1].title
                     tv_new1_date!!.text = date
                 }
@@ -228,7 +242,21 @@ class HomePager : Fragment(), View.OnClickListener {
             }
         })
     }
+    private fun getWeather() {
+        WeatherModel(activity, FinalJAVA.Weather, object : WeatherModel.ResultInterface {
+            override fun success(bean: WeatherBean) {
+                activity.runOnUiThread {
+                    weatherBean=bean
+                    tv_temp!!.text=bean.data[0].tem1+"/"+bean.data[0].tem2
+                    tv_windDirection!!.text=bean.data[0].win[0]
+                    tv_weather!!.text=bean.data[0].wea.toString()
+                    tv_air!!.text=bean.data[0].air_level
+                    tv_humidity!!.text=bean.data[0].humidity.toString()
+                }
+            }
+        })
 
+    }
     private fun formatJsonToEntity(json: String): ArrayList<NewEntity> {
         val list: ArrayList<NewEntity>
         val listType = object : TypeToken<List<NewEntity>>() {

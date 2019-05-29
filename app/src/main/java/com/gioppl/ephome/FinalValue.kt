@@ -33,6 +33,7 @@ class FinalValue {
          var INTERFACE_ServletNongyeHuanbao="/ServletNongyeHuanbao";
          var INTERFACE_ServletResourceLimitTo="/ServletResourceLimitTo";
          var INTERFACE_ServletNewLimitTo="/ServletNewLimitTo";
+         var INTERFACE_ServletNewADD="/ServletNewADD";
 
         //数据第一次加载
         internal var FORUM_IS_FIRST_LOAD=true//论坛是不是第一次加载
@@ -54,6 +55,7 @@ class FinalValue {
         internal var HEAD_PHOTO_URL="http://ac-rxsnxjjw.clouddn.com/LBT7wbbfWF0bIvzwbH7kmF0J62OpeQlaNTx7bSp3.jpg"
         internal var ADMIN=false
         internal var MAIL="1766468447@qq.com"
+
 
 
 

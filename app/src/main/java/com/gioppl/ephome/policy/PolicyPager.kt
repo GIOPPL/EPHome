@@ -52,14 +52,17 @@ class PolicyPager : Fragment() {
 
     private fun initDate() {
         val map = HashMap<String, Any>()
-        map.put("from", from)
-        map.put("to", to)
+        map.put("from", 1)
+        map.put("to", 1000)
         var base_url=SharedPreferencesUtils.getParam(activity,"base_url","错误url")as String
         PostRequest(map, base_url+FinalValue.INTERFACE_POLICY, PostRequest.POST, object : PostRequest.RequestCallback {
             override fun success(back: String) {
                 Log.i("AAAAA",back)
-                for (i in formatBeanList(back.substring(20, back.length - 1)))
-                    policyList.add(i)
+                policyList.clear()
+                for (i in formatBeanList(back.substring(20, back.length - 1))){
+                    policyList.add(0,i)
+                }
+
                 mAdapt!!.notifyDataSetChanged()
                 mXRecyclerView!!.performClick()
 //                if (policyList.size < 5)
@@ -84,24 +87,14 @@ class PolicyPager : Fragment() {
 
     //set adapt
     private fun SetAdaptManager() {
-//        mXRecyclerView= activity.findViewById(R.id.rv_policy) as XRecyclerView
-//        val layoutManager = LinearLayoutManager(activity)
-//        mXRecyclerView!!.layoutManager=layoutManager
-//        mXRecyclerView!!.setHasFixedSize(true)
-//        layoutManager.orientation = OrientationHelper.VERTICAL
-//        mAdapt = PolicyAdapt(FinalValue.policyList, activity)
-//        mXRecyclerView!!.adapter=mAdapt
         mXRecyclerView = activity.findViewById(R.id.rv_policy) as XRecyclerView?
         mAdapt = PolicyAdapt(policyList, activity)
         val xLinearLayoutManager = XLinearLayoutManager(activity)
-//        val xGridLayoutManager = XGridLayoutManager(activity, 2)
-//        val xStaggeredGridLayoutManager = XStaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         mXRecyclerView!!.layoutManager = xLinearLayoutManager as RecyclerView.LayoutManager?
         mFooterView = LayoutInflater.from(activity).inflate(R.layout.footer_view, null)
         mHeaderView = LayoutInflater.from(activity).inflate(R.layout.custom_header_view, null)
         mXRecyclerView!!.addHeaderView(mHeaderView, 50)
         mXRecyclerView!!.addFootView(mFooterView, 50)
-//        initData()
         mXRecyclerView!!.adapter = mAdapt
         mXRecyclerView!!.setOnLoadMoreListener(OnLoadMoreListener { loadMoreData() })
         mXRecyclerView!!.setOnRefreshListener(OnRefreshListener { refreshData() })

@@ -76,8 +76,8 @@ class MainActivity : AppCompatActivity() {
         val im_calculator = findViewById(R.id.im_top_calculator) as ImageView
         val im_search=findViewById(R.id.im_top_search) as ImageView
         mRadioGroup = findViewById(R.id.rg_main_bottom) as RadioGroup?
-        mRadioGroup!!.check(0)
-        mRadioGroup!!.setOnCheckedChangeListener {
+        mRadioGroup!!.check(R.id.rbtn_main_one)
+        mRadioGroup!!.setOnCheckedChangeListener {//LearnFragment
             radioGroup, i ->
             when (i) {
                 R.id.rbtn_main_one -> {

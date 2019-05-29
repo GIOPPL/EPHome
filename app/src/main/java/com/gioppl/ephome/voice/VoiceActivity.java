@@ -279,11 +279,11 @@ public class VoiceActivity extends FatherActivity{
         return jsonBean.getBest_result();
     }
     private ArrayList<ForumBean> formatResultJson(String json) {
-            ArrayList<ForumBean> list;
-            Type listType = new TypeToken<List<ForumBean>>() {}.getType();
-            Gson gson=new Gson();
-            list=gson.fromJson(json, listType);
-            return list;
+        ArrayList<ForumBean> list;
+        Type listType = new TypeToken<List<ForumBean>>() {}.getType();
+        Gson gson=new Gson();
+        list=gson.fromJson(json, listType);
+        return list;
     }
 
 }

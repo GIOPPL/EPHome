@@ -19,7 +19,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="20dp"
-            android:src="@mipmap/message_000000" />
+            android:src="@mipmap/user_blue" />
 
         <View
             android:layout_width="1dp"
@@ -50,7 +50,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="20dp"
-            android:src="@mipmap/message_000000" />
+            android:src="@mipmap/address" />
 
         <View
             android:layout_width="1dp"
@@ -82,7 +82,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="20dp"
-            android:src="@mipmap/message_000000" />
+            android:src="@mipmap/email" />
 
         <View
             android:layout_width="1dp"
@@ -120,7 +120,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="20dp"
-            android:src="@mipmap/message_000000" />
+            android:src="@mipmap/phone" />
 
         <View
             android:layout_width="1dp"

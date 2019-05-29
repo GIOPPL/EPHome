@@ -29,13 +29,14 @@ class Biology : FatherActivity() {
     private fun initData() {
         val map = HashMap<String, Any>()
         map.put("from","1")
-        map.put("to","10");
+        map.put("to","100");
         var base_url= SharedPreferencesUtils.getParam(this@Biology,"base_url","错误url")as String
         PostRequest(map, base_url+FinalValue.INTERFACE_ServletResourceLimitTo, PostRequest.POST, object : PostRequest.RequestCallback {
             override fun success(back: String) {
                 val list=formatJsonToEntity(back)
+                mList.clear()
                 for (i in list)
-                    mList!!.add(i)
+                    mList.add(0,i)
                 mAdapt!!.notifyDataSetChanged()
             }
 

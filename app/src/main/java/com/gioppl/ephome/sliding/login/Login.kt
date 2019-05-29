@@ -51,8 +51,8 @@ class Login : AppCompatActivity() {
             val map = HashMap<String, Any>()
             map.put("iphone",ed_user!!.text.toString())
             map.put("upwd",ed_psw!!.text.toString())
-
-            PostRequest(map, "${FinalValue.BASE_URL}/UserLogin", PostRequest.POST, object : PostRequest.RequestCallback {
+            val url="${FinalValue.BASE_URL}/UserLogin"
+            PostRequest(map,url , PostRequest.POST, object : PostRequest.RequestCallback {
                 override fun success(back: String) {
                     val bean=formatBeanList(back)
                     if (bean.isState){
@@ -64,6 +64,7 @@ class Login : AppCompatActivity() {
                         FinalValue.MAIL=bean.email
                         FinalValue.LOAD_STA=true
                         FinalValue.USER_PASSWORD=ed_psw!!.text.toString()
+                        FinalValue.ADMIN = bean.iphone.equals("17695564750")
                         SharedPreferencesUtils.setParam(this@Login,"userId",ed_user!!.text.toString())
                         SharedPreferencesUtils.setParam(this@Login,"password",ed_psw!!.text.toString())
                         EventBus.getDefault().postSticky(EventBusMain(true,true));

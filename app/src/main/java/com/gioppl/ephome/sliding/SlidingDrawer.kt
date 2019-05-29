@@ -6,10 +6,12 @@ import android.support.v4.app.FragmentActivity
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import com.facebook.drawee.view.SimpleDraweeView
 import com.gioppl.ephome.EventBusMain
 import com.gioppl.ephome.FinalValue
 import com.gioppl.ephome.R
+import com.gioppl.ephome.admin.AdminActivity
 import com.gioppl.ephome.sliding.AboutMe
 import com.gioppl.ephome.sliding.InternetActivity
 import com.gioppl.ephome.sliding.login.Login
@@ -48,6 +50,7 @@ class SlidingDrawer(private var activity: FragmentActivity,private var view:View
         lin_inter!!.setOnClickListener(this)
         view.findViewById(R.id.lin_sliding_update).setOnClickListener(this)
         view.findViewById(R.id.lin_sliding_about).setOnClickListener(this)
+        view.findViewById(R.id.lin_sliding_admin).setOnClickListener(this)
         sim_head!!.setImageURI(FinalValue.HEAD_PHOTO_URL)
         lin_login!!.setOnClickListener(this)
         sim_head!!.setOnClickListener(View.OnClickListener {
@@ -68,7 +71,6 @@ class SlidingDrawer(private var activity: FragmentActivity,private var view:View
             R.id.lin_sliding_update -> {
                 if (FinalValue.LOAD_STA) {
                     activity.startActivity(Intent(activity, UpdateUser::class.java))
-                    activity.finish()
                 } else
                     FinalValue.toast(activity, "您未登陆，不能更改信息")
             }
@@ -77,6 +79,13 @@ class SlidingDrawer(private var activity: FragmentActivity,private var view:View
             }
             R.id.lin_sliding_interface->{
                 activity.startActivity(Intent(activity, InternetActivity::class.java))
+            }
+            R.id.lin_sliding_admin->{
+                if (FinalValue.ADMIN){
+                    activity.startActivity(Intent(activity, AdminActivity::class.java))
+                }else{
+                    Toast.makeText(activity,"您无权进入",Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

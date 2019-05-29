@@ -29,7 +29,7 @@ class News :FatherActivity(){
     private fun initData() {
         val map = HashMap<String, Any>()
         map.put("from","1")
-        map.put("to","20");
+        map.put("to","200");
         var base_url= SharedPreferencesUtils.getParam(this@News,"base_url","错误url")as String
         PostRequest(map, base_url+FinalValue.INTERFACE_ServletNewLimitTo, PostRequest.POST, object : PostRequest.RequestCallback {
             override fun success(back: String) {

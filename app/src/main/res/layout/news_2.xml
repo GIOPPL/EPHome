@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="vertical"
-        android:background="#fefefe"
         android:paddingLeft="20dp">
 
         <LinearLayout
@@ -29,8 +28,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10sp"
-                android:text="什么是农药污染,怎样防止农药污染?"
-                android:textColor="#282727"
+                android:text="news1"
+                android:textColor="#ffffff"
                 android:textSize="20dp" />
         </LinearLayout>
         <LinearLayout
@@ -38,6 +37,7 @@
             android:layout_height="30dp"
             android:orientation="horizontal">
             <TextView
+                android:textColor="#ffffff"
                 android:id="@+id/tv_new2_date"
                 android:paddingLeft="130dp"
                 android:layout_width="wrap_content"

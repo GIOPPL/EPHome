@@ -28,13 +28,13 @@ class Circle :FatherActivity(){
     private fun initData() {
         val map = HashMap<String, Any>()
         map.put("from","1")
-        map.put("to","20");
+        map.put("to","200");
         var base_url= SharedPreferencesUtils.getParam(this@Circle,"base_url","错误url")as String
         PostRequest(map, base_url+FinalValue.INTERFACE_ServletNongyeHuanbao, PostRequest.POST, object : PostRequest.RequestCallback {
             override fun success(back: String) {
                 val list=formatJsonToEntity(back)
                 for (i in list)
-                    mList.add(i)
+                    mList.add(0,i)
                 mAdapt!!.notifyDataSetChanged()
             }
 

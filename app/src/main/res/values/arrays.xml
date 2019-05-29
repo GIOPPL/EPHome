@@ -4,4 +4,10 @@
         <item>简介</item>
         <item>计算器</item>
     </string-array>
+    <string-array name="admin_list">
+        <item>北京</item>
+        <item>上海</item>
+        <item>广州</item>
+        <item>深圳</item>
+    </string-array>
 </resources>
