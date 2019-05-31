@@ -1,6 +1,5 @@
 package com.gioppl.ephome.HomePager
 
-import android.app.Activity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.OrientationHelper
@@ -13,9 +12,10 @@ import com.gioppl.ephome.HomePager.adapt.WeatherAdapt
 import com.gioppl.ephome.HomePager.entity.WeatherBean
 import com.gioppl.ephome.R
 import com.gioppl.ephome.net.WeatherModel
+import com.gioppl.ephome.voice.write2voice.BaseActivity
 import java.util.*
 
-class FutureWeatherActivity : Activity() {
+class FutureWeatherActivity : BaseActivity() {
     private var rv: RecyclerView? = null
     private var mAdapt: WeatherAdapt? = null
     private var tv_title:TextView?=null
@@ -60,6 +60,13 @@ class FutureWeatherActivity : Activity() {
                 }
             }
         })
+    }
+    public fun startVoice(view:View){
+        var text=""
+        for (i in 0..mList.size-1){
+            text=text+mList[i].day+" "+mList[i].wea.toString()+" "
+        }
 
+        checkResult(synthesizer!!.speak(text), "speak")
     }
 }

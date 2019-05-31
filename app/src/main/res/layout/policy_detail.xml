@@ -1,49 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/lin_policyItem"
-        android:layout_width="match_parent"
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#d2d0d0"
-        android:orientation="vertical">
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"
+        android:onClick="startVoice"
+        android:src="@mipmap/voice"
+        android:translationZ="20dp"
+        app:elevation="8dp" />
 
-        <include layout="@layout/top_back" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/lin_policyItem"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:background="#d2d0d0"
+            android:orientation="vertical">
 
-            <TextView
-                android:gravity="center"
-                android:id="@+id/tv_policyDetail_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="农业部大力推动落实休闲农业和乡村旅游发展政策"
-                android:textColor="#3d3c3c"
-                android:textSize="20dp" />
+            <include layout="@layout/top_back" />
 
-            <TextView
-                android:paddingTop="10dp"
-                android:gravity="center"
-                android:id="@+id/tv_policyDetail_msg"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="农业部新闻办公室           2017-05-31 15:05:16" />
+                android:background="#ffffff"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-            <TextView
-                android:textColor="#e03d3c3c"
-                android:paddingTop="10dp"
-                android:id="@+id/tv_policyDetail_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/policy_1_content" />
+                <TextView
+                    android:id="@+id/tv_policyDetail_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="农业部大力推动落实休闲农业和乡村旅游发展政策"
+                    android:textColor="#3d3c3c"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/tv_policyDetail_msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="10dp"
+                    android:text="农业部新闻办公室           2017-05-31 15:05:16" />
+
+                <TextView
+                    android:id="@+id/tv_policyDetail_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:text="@string/policy_1_content"
+                    android:textColor="#e03d3c3c" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</RelativeLayout>

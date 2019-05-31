@@ -1,11 +1,11 @@
 package com.gioppl.ephome.policy
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.TextView
 import com.gioppl.ephome.HomePager.entity.PollutionEntity
 import com.gioppl.ephome.R
+import com.gioppl.ephome.voice.write2voice.BaseActivity
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -13,7 +13,7 @@ import org.greenrobot.eventbus.ThreadMode
 /**
  * Created by GIOPPL on 2017/10/9.
  */
-class PollutionDetail: AppCompatActivity() {
+class PollutionDetail: BaseActivity() {
     var tv_title:TextView?=null
     var tv_msg:TextView?=null
     var tv_content:TextView?=null
@@ -44,5 +44,9 @@ class PollutionDetail: AppCompatActivity() {
     }
     public fun back(view:View){
         finish()
+    }
+    public fun startVoice(view:View){
+        val text=if (eventBus!!.content.length>200) eventBus!!.content.substring(0,200) else eventBus!!.content
+        checkResult(synthesizer!!.speak(text), "speak")
     }
 }

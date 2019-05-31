@@ -1,12 +1,16 @@
 package com.gioppl.ephome.HomePager
 
+import android.app.Activity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.OrientationHelper
 import android.support.v7.widget.RecyclerView
 import android.util.Log
-import com.gioppl.ephome.*
+import com.gioppl.ephome.FinalValue
 import com.gioppl.ephome.HomePager.adapt.BiologyAdapt
+import com.gioppl.ephome.PostRequest
+import com.gioppl.ephome.R
+import com.gioppl.ephome.SharedPreferencesUtils
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.util.*
@@ -15,7 +19,7 @@ import java.util.*
  * Created by GIOPPL on 2017/12/4.
  */
 
-class Biology : FatherActivity() {
+class Biology : Activity() {
     var rv: RecyclerView? = null
     var mAdapt: BiologyAdapt? = null
     private var mList=ArrayList<BiologyEntity>()

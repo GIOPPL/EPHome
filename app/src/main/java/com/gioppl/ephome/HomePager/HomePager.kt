@@ -50,7 +50,6 @@ class  HomePager : Fragment(), View.OnClickListener {
     private var picture3="http://lc-rxsnxjjw.cn-n1.lcfile.com/eb24b1855eb68ba8c032/a2.png"
     private var picture4="http://lc-rxsnxjjw.cn-n1.lcfile.com/8db96d94964795c29b2c/a4.png"
 
-
     //轮播图
     var banner: BannerView<Any>? = null
     var titles = arrayOf("公告1", "公告2", "公告3", "公告4", "公告5", "公告6")
@@ -190,7 +189,6 @@ class  HomePager : Fragment(), View.OnClickListener {
                 activity.startActivity(Intent(context, HomePointFather::class.java))
             }
             R.id.lin_home_p5 -> {
-//                EventBus.getDefault().postSticky(HomePointModel(R.layout.p5_pullution,R.raw.mk_home_5));
                 activity.startActivity(Intent(context, Pollution::class.java))
             }
             R.id.lin_home_p6 -> {

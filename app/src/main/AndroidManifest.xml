@@ -12,6 +12,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <application
         android:name=".MyApplication"
@@ -21,7 +24,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".admin.AdminActivity"></activity>
+        <!--<activity android:name=".voice.VoiceTestActivity"/>-->
+        <activity android:name=".admin.AdminActivity" />
         <activity android:name=".HomePager.FutureWeatherActivity" />
         <activity android:name=".sliding.InternetActivity" />
         <activity android:name=".AppStart">
@@ -52,7 +56,6 @@
         <activity android:name=".HomePager.Biology" />
         <activity android:name=".HomePager.Circle" />
         <activity android:name=".voice.SearchResult" />
-
         <service
             android:name="com.baidu.speech.VoiceRecognitionService"
             android:exported="false" />

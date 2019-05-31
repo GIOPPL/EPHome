@@ -207,4 +207,7 @@ class MainActivity : AppCompatActivity() {
         FinalValue.successMessage("成功接收到登陆界面传递的数据." )
 
     }
+    public fun back(view: View){
+
+    }
 }
